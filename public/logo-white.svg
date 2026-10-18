@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" width="280" height="64" fill="none">
+  <defs>
+    <!-- R Gradient: Vibrant Ruby Coral -->
+    <linearGradient id="whtRGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF4D6D" />
+      <stop offset="100%" stop-color="#EF4444" />
+    </linearGradient>
+
+    <!-- C Gradient: Luminous Teal -->
+    <linearGradient id="whtCGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2DD4BF" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+
+    <!-- Accent Line Gradient for Dark Backgrounds: Gold to Cyan -->
+    <linearGradient id="whtLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="60%" stop-color="#2DD4BF" />
+      <stop offset="100%" stop-color="#60A5FA" />
+    </linearGradient>
+  </defs>
+
+  <!-- Left: Interlocking Monogram Emblem -->
+  <g transform="translate(24, 34)">
+    <!-- Letter R -->
+    <text
+      x="-10"
+      y="10"
+      font-family="'Playfair Display', 'Times New Roman', Georgia, serif"
+      font-size="38"
+      font-weight="800"
+      font-style="italic"
+      fill="url(#whtRGrad)"
+      stroke="#BE123C"
+      stroke-width="0.5"
+    >R</text>
+
+    <!-- Letter C -->
+    <text
+      x="8"
+      y="15"
+      font-family="'Playfair Display', 'Times New Roman', Georgia, serif"
+      font-size="34"
+      font-weight="800"
+      font-style="italic"
+      fill="url(#whtCGrad)"
+      stroke="#0D9488"
+      stroke-width="0.5"
+    >C</text>
+  </g>
+
+  <!-- Subtle divider line -->
+  <line x1="56" y1="12" x2="56" y2="52" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+
+  <!-- Right: Wordmark REX CURE in crisp white -->
+  <text
+    x="68"
+    y="32"
+    font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif"
+    font-size="22"
+    font-weight="800"
+    letter-spacing="2"
+  >
+    <tspan fill="#5BC0BE">REX</tspan>
+    <tspan dx="4" fill="#FFFFFF">CURE</tspan>
+  </text>
+
+  <!-- Accent Divider Line -->
+  <rect
+    x="68"
+    y="38"
+    width="196"
+    height="2.5"
+    rx="1.25"
+    fill="url(#whtLineGrad)"
+  />
+
+  <!-- Script Pharma in glowing warm gold -->
+  <text
+    x="262"
+    y="56"
+    text-anchor="end"
+    font-family="'Brush Script MT', 'Caveat', 'Great Vibes', cursive, 'Times New Roman', serif"
+    font-size="22"
+    font-weight="bold"
+    font-style="italic"
+    fill="#FBBF24"
+  >Pharma</text>
+</svg>

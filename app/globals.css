@@ -1,0 +1,342 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@theme inline {
+  --font-heading: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  /* Abbott-Inspired Corporate Pharmaceutical Color System */
+  --color-corporate-blue: #080878;
+  --color-corporate-deep: #000066;
+  --color-corporate-accent: #304BEA;
+  --color-corporate-light-blue: #DDE2FF;
+  --color-corporate-neutral: #F5F6FA;
+  --color-corporate-text-primary: #202124;
+  --color-corporate-text-secondary: #555B66;
+  --color-corporate-border: #D9DDE7;
+
+  --color-primary: #080878;
+  --color-primary-hover: #000066;
+  --color-primary-foreground: #FFFFFF;
+
+  --color-secondary: #304BEA;
+  --color-secondary-hover: #080878;
+  --color-secondary-foreground: #FFFFFF;
+
+  --color-accent: #DDE2FF;
+  --color-accent-foreground: #080878;
+
+  --color-background: #FFFFFF;
+  --color-foreground: #202124;
+
+  --color-card: #FFFFFF;
+  --color-card-foreground: #202124;
+
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #202124;
+
+  --color-muted: #F5F6FA;
+  --color-muted-foreground: #555B66;
+
+  --color-border: #D9DDE7;
+  --color-input: #D9DDE7;
+  --color-ring: #304BEA;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+}
+
+:root {
+  /* Global Typography Tokens */
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --text-small: 0.8125rem;
+  --text-body: 1rem;
+  --heading-section: clamp(1.75rem, 3vw, 2.25rem);
+  --heading-page: clamp(2.375rem, 4vw, 2.875rem);
+  --heading-hero: clamp(2.5rem, 4.5vw, 3.25rem);
+  --line-height-body: 1.65;
+  --line-height-heading: 1.2;
+
+  --background: #FFFFFF;
+  --foreground: #202124;
+  --card: #FFFFFF;
+  --card-foreground: #202124;
+  --popover: #FFFFFF;
+  --popover-foreground: #202124;
+  --primary: #080878;
+  --primary-foreground: #FFFFFF;
+  --secondary: #304BEA;
+  --secondary-foreground: #FFFFFF;
+  --muted: #F5F6FA;
+  --muted-foreground: #555B66;
+  --accent: #DDE2FF;
+  --accent-foreground: #080878;
+  --destructive: #DC2626;
+  --border: #D9DDE7;
+  --input: #D9DDE7;
+  --ring: #304BEA;
+  --radius: 0.375rem;
+}
+
+@layer base {
+  * {
+    border-color: #D9DDE7;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  body {
+    background-color: #FFFFFF;
+    color: #334155;
+    min-height: 100vh;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    line-height: 1.65;
+    letter-spacing: -0.011em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #080878;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  p {
+    color: #475569;
+    line-height: 1.7;
+  }
+}
+
+@layer components {
+  /* Corporate Pharmaceutical Header */
+  .header-scrolled {
+    background: #080878;
+    box-shadow: 0 4px 16px -2px rgba(8, 8, 120, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  /* Abbott-Style Pharmaceutical Card */
+  .pharma-card {
+    background: #FFFFFF;
+    border: 1px solid #D9DDE7;
+    border-radius: 0.375rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .pharma-card:hover {
+    border-color: #080878;
+    box-shadow: 0 6px 18px -3px rgba(8, 8, 120, 0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Section Alternating Backgrounds */
+  .section-white {
+    background-color: #FFFFFF;
+  }
+
+  .section-neutral {
+    background-color: #F5F6FA;
+  }
+
+  .section-light-blue {
+    background-color: #DDE2FF;
+  }
+
+  .section-corporate-blue {
+    background-color: #080878;
+    color: #FFFFFF;
+  }
+
+  /* Corporate Pharmaceutical Badges */
+  .badge-pharma {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background-color: #DDE2FF;
+    color: #080878;
+    border: 1px solid #CCD5FF;
+    border-radius: 0.25rem;
+  }
+
+  .badge-neutral {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background-color: #F5F6FA;
+    color: #475569;
+    border: 1px solid #D9DDE7;
+    border-radius: 0.25rem;
+  }
+
+  /* Corporate CTA Buttons - Abbott Style */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #080878;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.75rem 1.625rem;
+    border-radius: 0.375rem;
+    border: 1px solid #080878;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .btn-primary:hover {
+    background-color: #000066;
+    border-color: #000066;
+    box-shadow: 0 4px 12px rgba(8, 8, 120, 0.25);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #FFFFFF;
+    color: #080878;
+    border: 1.5px solid #080878;
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.75rem 1.625rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .btn-secondary:hover {
+    background-color: #F5F6FA;
+    color: #000066;
+    border-color: #000066;
+  }
+
+  .btn-accent {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: #304BEA;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.75rem 1.625rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .btn-accent:hover {
+    background-color: #080878;
+    box-shadow: 0 4px 12px rgba(48, 75, 234, 0.3);
+  }
+
+  /* Slow Cinematic Pharmaceutical Animations */
+  @keyframes pharmaSlowZoomA {
+    0% {
+      transform: scale(1.0) translate(0%, 0%);
+    }
+    50% {
+      transform: scale(1.04) translate(-0.6%, -0.3%);
+    }
+    100% {
+      transform: scale(1.0) translate(0%, 0%);
+    }
+  }
+
+  @keyframes pharmaSlowZoomB {
+    0% {
+      transform: scale(1.04) translate(0.5%, 0.2%);
+    }
+    50% {
+      transform: scale(1.0) translate(0%, 0%);
+    }
+    100% {
+      transform: scale(1.04) translate(0.5%, 0.2%);
+    }
+  }
+
+  @keyframes clinicalSheen {
+    0% {
+      transform: translateX(-150%) skewX(-15deg);
+      opacity: 0;
+    }
+    25% {
+      opacity: 0.12;
+    }
+    50% {
+      opacity: 0.18;
+    }
+    75% {
+      opacity: 0.12;
+    }
+    100% {
+      transform: translateX(250%) skewX(-15deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes pharmaPulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.9;
+    }
+    50% {
+      transform: scale(1.35);
+      opacity: 0.4;
+    }
+  }
+
+  .animate-pharma-zoom-a {
+    animation: pharmaSlowZoomA 16s ease-in-out infinite alternate;
+  }
+
+  .animate-pharma-zoom-b {
+    animation: pharmaSlowZoomB 18s ease-in-out infinite alternate;
+  }
+
+  .animate-clinical-sheen {
+    animation: clinicalSheen 10s ease-in-out infinite;
+  }
+
+  .animate-pharma-beacon {
+    animation: pharmaPulse 2.8s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-pharma-zoom-a,
+    .animate-pharma-zoom-b,
+    .animate-clinical-sheen,
+    .animate-pharma-beacon {
+      animation: none !important;
+      transform: none !important;
+    }
+  }
+}

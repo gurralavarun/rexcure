@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" width="280" height="64" fill="none">
+  <defs>
+    <!-- R Gradient: Crimson Ruby into warm coral -->
+    <linearGradient id="hdrRGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#DC2626" />
+      <stop offset="60%" stop-color="#C52233" />
+      <stop offset="100%" stop-color="#E11D48" />
+    </linearGradient>
+
+    <!-- C Gradient: Deep Marine Teal into bright Medical Cyan -->
+    <linearGradient id="hdrCGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#008080" />
+      <stop offset="50%" stop-color="#00A6A6" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+
+    <!-- Accent Line Gradient: Gold to Teal -->
+    <linearGradient id="hdrLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="45%" stop-color="#E5A93C" />
+      <stop offset="80%" stop-color="#00A6A6" />
+      <stop offset="100%" stop-color="#0B3C5D" />
+    </linearGradient>
+
+    <!-- Pharma Script Gradient: Amber Gold to Warm Crimson -->
+    <linearGradient id="hdrPharmaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+  </defs>
+
+  <!-- Left: Interlocking Monogram Emblem -->
+  <g transform="translate(24, 34)">
+    <!-- Letter R -->
+    <text
+      x="-10"
+      y="10"
+      font-family="'Playfair Display', 'Times New Roman', Georgia, serif"
+      font-size="38"
+      font-weight="800"
+      font-style="italic"
+      fill="url(#hdrRGrad)"
+      stroke="#991B1B"
+      stroke-width="0.6"
+    >R</text>
+
+    <!-- Letter C -->
+    <text
+      x="8"
+      y="15"
+      font-family="'Playfair Display', 'Times New Roman', Georgia, serif"
+      font-size="34"
+      font-weight="800"
+      font-style="italic"
+      fill="url(#hdrCGrad)"
+      stroke="#006666"
+      stroke-width="0.6"
+    >C</text>
+  </g>
+
+  <!-- Divider between Monogram and Text -->
+  <line x1="56" y1="12" x2="56" y2="52" stroke="#E2E8F0" stroke-width="1.5" />
+
+  <!-- Right: Wordmark REX CURE -->
+  <text
+    x="68"
+    y="32"
+    font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif"
+    font-size="22"
+    font-weight="800"
+    letter-spacing="2"
+  >
+    <tspan fill="#008080">REX</tspan>
+    <tspan dx="4" fill="#0B3C5D">CURE</tspan>
+  </text>
+
+  <!-- Accent Divider Line -->
+  <rect
+    x="68"
+    y="38"
+    width="196"
+    height="2.5"
+    rx="1.25"
+    fill="url(#hdrLineGrad)"
+  />
+
+  <!-- Script Pharma -->
+  <text
+    x="262"
+    y="56"
+    text-anchor="end"
+    font-family="'Brush Script MT', 'Caveat', 'Great Vibes', cursive, 'Times New Roman', serif"
+    font-size="22"
+    font-weight="bold"
+    font-style="italic"
+    fill="url(#hdrPharmaGrad)"
+    stroke="#92400E"
+    stroke-width="0.3"
+  >Pharma</text>
+</svg>

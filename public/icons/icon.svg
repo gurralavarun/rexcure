@@ -1,0 +1,55 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="favBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B3C5D" />
+      <stop offset="100%" stop-color="#072438" />
+    </linearGradient>
+
+    <!-- R Gradient: Crimson Ruby into Coral -->
+    <linearGradient id="favRGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF4D6D" />
+      <stop offset="60%" stop-color="#DC2626" />
+      <stop offset="100%" stop-color="#E11D48" />
+    </linearGradient>
+
+    <!-- C Gradient: Luminous Medical Teal -->
+    <linearGradient id="favCGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2DD4BF" />
+      <stop offset="50%" stop-color="#00A6A6" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+  </defs>
+
+  <!-- Squircle Background -->
+  <rect width="180" height="180" rx="36" fill="url(#favBg)" stroke="rgba(255,255,255,0.15)" stroke-width="2" />
+
+  <!-- Interlocking Monogram RC -->
+  <g transform="translate(90, 95)" text-anchor="middle">
+    <!-- Letter R -->
+    <text
+      x="-22"
+      y="26"
+      font-family="'Playfair Display', 'Times New Roman', Georgia, serif"
+      font-size="96"
+      font-weight="800"
+      font-style="italic"
+      fill="url(#favRGrad)"
+      stroke="#991B1B"
+      stroke-width="1.2"
+    >R</text>
+
+    <!-- Letter C -->
+    <text
+      x="22"
+      y="38"
+      font-family="'Playfair Display', 'Times New Roman', Georgia, serif"
+      font-size="86"
+      font-weight="800"
+      font-style="italic"
+      fill="url(#favCGrad)"
+      stroke="#006666"
+      stroke-width="1.2"
+    >C</text>
+  </g>
+</svg>
