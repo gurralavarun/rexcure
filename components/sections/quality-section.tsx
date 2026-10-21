@@ -51,8 +51,8 @@ export function QualitySection() {
             </p>
 
             {/* Authentic Analytical Testing Matrix Table */}
-            <div className="mt-8 w-full rounded border border-[#D9DDE7] bg-white overflow-hidden shadow-2xs">
-              <table className="w-full text-left text-xs sm:text-sm">
+            <div className="mt-8 w-full rounded border border-[#D9DDE7] bg-white overflow-x-auto shadow-2xs">
+              <table className="w-full text-left text-xs sm:text-sm min-w-[340px]">
                 <thead className="bg-[#DDE2FF] border-b border-[#CCD5FF] text-[#080878] text-[11px] font-semibold uppercase tracking-wider">
                   <tr>
                     <th className="px-4 py-3">Testing Parameter</th>
@@ -72,7 +72,7 @@ export function QualitySection() {
               </table>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
               <Link
                 href="/quality"
                 className="btn-primary"

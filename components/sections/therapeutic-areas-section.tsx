@@ -4,10 +4,10 @@ import { therapeuticAreas, products } from '@/data/products'
 
 export function TherapeuticAreasSection() {
   return (
-    <section className="bg-[#F5F6FA] py-16 lg:py-24 border-b border-[#D9DDE7] font-sans">
+    <section className="bg-[#F5F6FA] py-12 sm:py-16 lg:py-24 border-b border-[#D9DDE7] font-sans">
       <div className="mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-12 xl:px-16">
         {/* Abbott-Style Editorial Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8 sm:mb-12">
           <div>
             <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#080878] mb-2 flex items-center gap-2">
               <span className="h-0.5 w-6 bg-[#080878]" />

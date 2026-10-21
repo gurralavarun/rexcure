@@ -94,7 +94,7 @@ function ProductCatalogueContent({ id = 'catalogue' }: { id?: string }) {
       <div className="mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-12 xl:px-16">
         
         {/* Abbott Reference Screenshot 4: Segmented Tab Bar */}
-        <div className="mb-6 flex flex-wrap items-center border-b border-[#D9DDE7]">
+        <div className="mb-6 flex overflow-x-auto flex-nowrap sm:flex-wrap items-center border-b border-[#D9DDE7] scrollbar-none">
           <button
             type="button"
             onClick={() => {
@@ -102,7 +102,7 @@ function ProductCatalogueContent({ id = 'catalogue' }: { id?: string }) {
               setSelectedTherapy('all')
               setSelectedForm('all')
             }}
-            className={`px-6 py-3 text-xs sm:text-[13px] font-semibold uppercase tracking-wider transition-colors border-b-2 -mb-[2px] ${
+            className={`px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-[13px] font-semibold uppercase tracking-wider transition-colors border-b-2 -mb-[2px] whitespace-nowrap shrink-0 cursor-pointer ${
               activeTab === 'all'
                 ? 'border-[#080878] bg-[#080878] text-white'
                 : 'border-transparent text-[#555B66] hover:text-[#080878] hover:bg-white'
@@ -113,7 +113,7 @@ function ProductCatalogueContent({ id = 'catalogue' }: { id?: string }) {
           <button
             type="button"
             onClick={() => setActiveTab('therapies')}
-            className={`px-6 py-3 text-xs sm:text-[13px] font-semibold uppercase tracking-wider transition-colors border-b-2 -mb-[2px] ${
+            className={`px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-[13px] font-semibold uppercase tracking-wider transition-colors border-b-2 -mb-[2px] whitespace-nowrap shrink-0 cursor-pointer ${
               activeTab === 'therapies'
                 ? 'border-[#080878] bg-[#080878] text-white'
                 : 'border-transparent text-[#555B66] hover:text-[#080878] hover:bg-white'
@@ -124,7 +124,7 @@ function ProductCatalogueContent({ id = 'catalogue' }: { id?: string }) {
           <button
             type="button"
             onClick={() => setActiveTab('dosage')}
-            className={`px-6 py-3 text-xs sm:text-[13px] font-semibold uppercase tracking-wider transition-colors border-b-2 -mb-[2px] ${
+            className={`px-4 sm:px-6 py-2.5 sm:py-3 text-xs sm:text-[13px] font-semibold uppercase tracking-wider transition-colors border-b-2 -mb-[2px] whitespace-nowrap shrink-0 cursor-pointer ${
               activeTab === 'dosage'
                 ? 'border-[#080878] bg-[#080878] text-white'
                 : 'border-transparent text-[#555B66] hover:text-[#080878] hover:bg-white'

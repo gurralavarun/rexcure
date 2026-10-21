@@ -118,7 +118,7 @@ export function Contact({ id = 'contact' }: { id?: string }) {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="Dr. / Mr. / Ms. Name"
-                        className="w-full rounded border border-[#D9DDE7] bg-white px-3.5 py-2.5 text-xs text-[#202124] focus:border-[#080878] focus:ring-1 focus:ring-[#080878] focus:outline-none"
+                        className="w-full rounded border border-[#D9DDE7] bg-white px-3.5 py-2.5 text-base sm:text-xs text-[#202124] focus:border-[#080878] focus:ring-1 focus:ring-[#080878] focus:outline-none"
                       />
                     </div>
                     <div>
@@ -131,7 +131,7 @@ export function Contact({ id = 'contact' }: { id?: string }) {
                         value={formData.organization}
                         onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                         placeholder="Hospital / Distributorship Name"
-                        className="w-full rounded border border-[#D9DDE7] bg-white px-3.5 py-2.5 text-xs text-[#202124] focus:border-[#080878] focus:ring-1 focus:ring-[#080878] focus:outline-none"
+                        className="w-full rounded border border-[#D9DDE7] bg-white px-3.5 py-2.5 text-base sm:text-xs text-[#202124] focus:border-[#080878] focus:ring-1 focus:ring-[#080878] focus:outline-none"
                       />
                     </div>
                   </div>
@@ -149,7 +149,7 @@ export function Contact({ id = 'contact' }: { id?: string }) {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="corporate@domain.com"
-                        className="w-full rounded border border-[#D9DDE7] bg-white px-3.5 py-2.5 text-xs text-[#202124] focus:border-[#080878] focus:ring-1 focus:ring-[#080878] focus:outline-none"
+                        className="w-full rounded border border-[#D9DDE7] bg-white px-3.5 py-2.5 text-base sm:text-xs text-[#202124] focus:border-[#080878] focus:ring-1 focus:ring-[#080878] focus:outline-none"
                       />
                     </div>
                     <div>
@@ -164,7 +164,7 @@ export function Contact({ id = 'contact' }: { id?: string }) {
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         placeholder="+91 00000 00000"
-                        className="w-full rounded border border-[#D9DDE7] bg-white px-3.5 py-2.5 text-xs text-[#202124] focus:border-[#080878] focus:ring-1 focus:ring-[#080878] focus:outline-none"
+                        className="w-full rounded border border-[#D9DDE7] bg-white px-3.5 py-2.5 text-base sm:text-xs text-[#202124] focus:border-[#080878] focus:ring-1 focus:ring-[#080878] focus:outline-none"
                       />
                     </div>
                   </div>
@@ -178,7 +178,7 @@ export function Contact({ id = 'contact' }: { id?: string }) {
                       name="inquiryType"
                       value={formData.inquiryType}
                       onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
-                      className="w-full rounded border border-[#D9DDE7] bg-white px-3.5 py-2.5 text-xs text-[#202124] focus:border-[#080878] focus:ring-1 focus:ring-[#080878] focus:outline-none"
+                      className="w-full rounded border border-[#D9DDE7] bg-white px-3.5 py-2.5 text-base sm:text-xs text-[#202124] focus:border-[#080878] focus:ring-1 focus:ring-[#080878] focus:outline-none"
                     >
                       <option value="Distribution Partnership">PCD Franchise / State Distributorship</option>
                       <option value="Hospital Supply">Institutional &amp; Hospital Tender Supply</option>
@@ -199,7 +199,7 @@ export function Contact({ id = 'contact' }: { id?: string }) {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Specify formulation requirements or procurement details..."
-                      className="w-full rounded border border-[#D9DDE7] bg-white px-3.5 py-2.5 text-xs text-[#202124] focus:border-[#080878] focus:ring-1 focus:ring-[#080878] focus:outline-none resize-none"
+                      className="w-full rounded border border-[#D9DDE7] bg-white px-3.5 py-2.5 text-base sm:text-xs text-[#202124] focus:border-[#080878] focus:ring-1 focus:ring-[#080878] focus:outline-none resize-none"
                     />
                   </div>
 

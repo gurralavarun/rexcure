@@ -17,11 +17,11 @@ export function SiteFooter() {
               <SiteLogo variant="dark" />
             </div>
 
-            {/* Middle: 3 Columns of Single Headings Only (Abbott Benchmark) */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 lg:gap-14 flex-1 max-w-3xl">
+            {/* Middle: Columns of Single Headings Only (Abbott Benchmark) */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-10 lg:gap-14 flex-1 max-w-3xl">
               
               {/* Column 1 */}
-              <div className="flex flex-col space-y-3.5 text-xs sm:text-[13px] font-medium uppercase tracking-wider text-white/90">
+              <div className="flex flex-col space-y-3 sm:space-y-3.5 text-xs sm:text-[13px] font-medium uppercase tracking-wider text-white/90">
                 <Link href="/about" className="hover:text-white transition-colors">
                   ABOUT US
                 </Link>
@@ -37,7 +37,7 @@ export function SiteFooter() {
               </div>
 
               {/* Column 2 */}
-              <div className="flex flex-col space-y-3.5 text-xs sm:text-[13px] font-medium uppercase tracking-wider text-white/90">
+              <div className="flex flex-col space-y-3 sm:space-y-3.5 text-xs sm:text-[13px] font-medium uppercase tracking-wider text-white/90">
                 <Link href="/contact" className="hover:text-white transition-colors">
                   INSTITUTIONAL SUPPLY
                 </Link>
@@ -47,18 +47,18 @@ export function SiteFooter() {
                 <Link href="/contact" className="hover:text-white transition-colors">
                   CONTACTS
                 </Link>
+                <Link href="/quality" className="hover:text-white transition-colors">
+                  SCHEDULE M COMPLIANCE
+                </Link>
               </div>
 
               {/* Column 3 */}
-              <div className="flex flex-col space-y-3.5 text-xs sm:text-[13px] font-medium uppercase tracking-wider text-white/90">
+              <div className="flex flex-col space-y-3 sm:space-y-3.5 text-xs sm:text-[13px] font-medium uppercase tracking-wider text-white/90 col-span-2 sm:col-span-1">
                 <Link href="/sitemap.xml" className="hover:text-white transition-colors">
                   SITE MAP
                 </Link>
                 <Link href="/contact" className="hover:text-white transition-colors">
                   PHARMACOVIGILANCE
-                </Link>
-                <Link href="/quality" className="hover:text-white transition-colors">
-                  SCHEDULE M COMPLIANCE
                 </Link>
                 <Link href="/about" className="hover:text-white transition-colors">
                   PRIVACY POLICY
@@ -71,12 +71,12 @@ export function SiteFooter() {
             </div>
 
             {/* Right: Social Media Icons (Abbott Screenshot 2 Style) */}
-            <div className="shrink-0 flex items-center gap-3.5 pt-2 lg:pt-0">
+            <div className="shrink-0 flex items-center gap-3 pt-2 lg:pt-0">
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex size-8 items-center justify-center rounded-full bg-white/10 hover:bg-white text-white hover:text-[#080878] transition-colors font-bold text-xs"
+                className="flex size-9 items-center justify-center rounded-full bg-white/10 hover:bg-white text-white hover:text-[#080878] transition-colors font-bold text-xs"
                 aria-label="Facebook"
               >
                 f
@@ -85,7 +85,7 @@ export function SiteFooter() {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex size-8 items-center justify-center rounded-full bg-white/10 hover:bg-white text-white hover:text-[#080878] transition-colors font-bold text-xs"
+                className="flex size-9 items-center justify-center rounded-full bg-white/10 hover:bg-white text-white hover:text-[#080878] transition-colors font-bold text-xs"
                 aria-label="X (Twitter)"
               >
                 X
@@ -94,7 +94,7 @@ export function SiteFooter() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex size-8 items-center justify-center rounded-full bg-white/10 hover:bg-white text-white hover:text-[#080878] transition-colors font-bold text-xs"
+                className="flex size-9 items-center justify-center rounded-full bg-white/10 hover:bg-white text-white hover:text-[#080878] transition-colors font-bold text-xs"
                 aria-label="Instagram"
               >
                 IG
@@ -103,7 +103,7 @@ export function SiteFooter() {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex size-8 items-center justify-center rounded-full bg-white/10 hover:bg-white text-white hover:text-[#080878] transition-colors font-bold text-xs"
+                className="flex size-9 items-center justify-center rounded-full bg-white/10 hover:bg-white text-white hover:text-[#080878] transition-colors font-bold text-xs"
                 aria-label="YouTube"
               >
                 YT
@@ -112,7 +112,7 @@ export function SiteFooter() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex size-8 items-center justify-center rounded-full bg-white/10 hover:bg-white text-white hover:text-[#080878] transition-colors font-bold text-xs"
+                className="flex size-9 items-center justify-center rounded-full bg-white/10 hover:bg-white text-white hover:text-[#080878] transition-colors font-bold text-xs"
                 aria-label="LinkedIn"
               >
                 in

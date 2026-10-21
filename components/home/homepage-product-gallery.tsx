@@ -170,7 +170,7 @@ export function HomepageProductGallery() {
                   {/* Alternate Packaging Angle Switcher (When multiple shots exist in public/mainproducts/) */}
                   {hasMultipleImages && (
                     <div
-                      className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5 bg-white/95 backdrop-blur-xs border border-[#D9DDE7] px-2.5 py-1 rounded-full shadow-2xs"
+                      className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1 bg-white/95 backdrop-blur-xs border border-[#D9DDE7] px-2.5 py-0.5 rounded-full shadow-2xs"
                       onClick={(e) => e.stopPropagation()}
                     >
                       <span className="text-[10px] font-medium text-[#555B66] mr-0.5">
@@ -187,12 +187,16 @@ export function HomepageProductGallery() {
                           onMouseEnter={() =>
                             setHoveredImage((prev) => ({ ...prev, [product.slug]: idx }))
                           }
-                          className={`size-2.5 rounded-full transition-all cursor-pointer ${
-                            activeIdx === idx
-                              ? 'bg-[#080878] scale-125'
-                              : 'bg-[#94A3B8] hover:bg-[#64748B]'
-                          }`}
-                        />
+                          className="p-1.5 flex items-center justify-center cursor-pointer focus:outline-none"
+                        >
+                          <span
+                            className={`size-2.5 rounded-full transition-all block ${
+                              activeIdx === idx
+                                ? 'bg-[#080878] scale-125'
+                                : 'bg-[#94A3B8] hover:bg-[#64748B]'
+                            }`}
+                          />
+                        </button>
                       ))}
                     </div>
                   )}

@@ -11,7 +11,7 @@ import {
   Phone,
 } from 'lucide-react'
 import { SiteLogo } from './site-logo'
-import { company, products } from '@/data/products'
+import { company, products, therapeuticAreas } from '@/data/products'
 
 export function SiteHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -63,7 +63,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full shadow-md font-sans">
       {/* 1. TOP UTILITY STRIP (Abbott Reference Screenshot 1) */}
-      <div className="w-full bg-[#000066] border-b border-white/10 text-white/80 py-1.5 px-6 sm:px-10 lg:px-12 xl:px-16 text-[11px] font-semibold tracking-wider uppercase">
+      <div className="w-full bg-[#000066] border-b border-white/10 text-white/80 py-1.5 px-4 sm:px-10 lg:px-12 xl:px-16 text-[10px] sm:text-[11px] font-semibold tracking-wider uppercase">
         <div className="mx-auto flex w-full max-w-[1560px] items-center justify-between">
           <div className="hidden sm:flex items-center gap-4 text-white/70">
             <span className="flex items-center gap-1.5">
@@ -76,7 +76,7 @@ export function SiteHeader() {
             </span>
           </div>
 
-          <div className="flex items-center gap-5 ml-auto text-xs tracking-wider">
+          <div className="flex items-center gap-3 sm:gap-5 ml-auto text-[10px] sm:text-xs tracking-wider">
             <Link
               href="/contact"
               className="text-white/80 hover:text-white transition-colors"
@@ -86,7 +86,7 @@ export function SiteHeader() {
             <span className="text-white/30">|</span>
             <a
               href={`tel:+91${company.phone}`}
-              className="text-white hover:text-[#CCD5FF] transition-colors font-bold inline-flex items-center gap-1"
+              className="text-white hover:text-[#CCD5FF] transition-colors font-bold inline-flex items-center gap-1 shrink-0"
             >
               <Phone className="size-3" />
               <span>{company.phoneDisplay}</span>
@@ -97,7 +97,7 @@ export function SiteHeader() {
 
       {/* 2. MAIN CORPORATE NAVIGATION BAR (Abbott Reference Screenshots 1 & 3) */}
       <div className="relative bg-[#080878] text-white border-b border-white/10">
-        <div className="mx-auto flex w-full max-w-[1560px] items-stretch justify-between px-6 sm:px-10 lg:px-12 xl:px-16 min-h-[60px]">
+        <div className="mx-auto flex w-full max-w-[1560px] items-stretch justify-between px-4 sm:px-10 lg:px-12 xl:px-16 min-h-[56px] sm:min-h-[60px]">
           
           {/* RexCure Brand Logo (Left - Abbott pure white styling) */}
           <div className="shrink-0 flex items-center py-2.5">
@@ -274,73 +274,92 @@ export function SiteHeader() {
 
       {/* MOBILE DRAWER */}
       {mobileMenuOpen && (
-        <div className="border-b border-white/15 bg-[#080878] px-6 py-6 lg:hidden animate-in slide-in-from-top duration-200 text-white">
-          <form onSubmit={handleSearchSubmit} className="relative mb-5">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="SEARCH..."
-              className="w-full rounded-full border border-white/25 bg-white/10 px-4 py-2 pr-9 text-xs text-white placeholder:text-white/60 focus:bg-white focus:text-[#080878] focus:outline-none"
-            />
-            <Search className="pointer-events-none absolute right-3.5 top-1/2 size-4 -translate-y-1/2 text-white/60" />
-          </form>
+        <>
+          <div
+            className="fixed inset-0 top-[96px] bg-black/50 z-40 lg:hidden backdrop-blur-xs animate-in fade-in duration-200"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+          <div className="relative z-50 border-b border-white/15 bg-[#080878] px-5 py-5 sm:px-8 sm:py-6 lg:hidden animate-in slide-in-from-top duration-200 text-white shadow-2xl">
+            <form onSubmit={handleSearchSubmit} className="relative mb-4">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="SEARCH FORMULATIONS..."
+                className="w-full rounded-full border border-white/25 bg-white/10 px-4 py-2.5 pr-10 text-xs sm:text-sm text-white placeholder:text-white/60 focus:bg-white focus:text-[#080878] focus:outline-none"
+              />
+              <button
+                type="submit"
+                aria-label="Submit search"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-white/70 hover:text-white"
+              >
+                <Search className="size-4" />
+              </button>
+            </form>
 
-          <nav className="flex flex-col space-y-1.5 text-xs sm:text-[13px] font-medium tracking-wide">
-            <Link
-              href="/"
-              onClick={(e) => {
-                setMobileMenuOpen(false)
-                if (pathname === '/') {
-                  e.preventDefault()
-                  window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
-                }
-              }}
-              className="py-2 px-3 rounded hover:bg-[#2A4BF2]"
-            >
-              Home
-            </Link>
-            <Link
-              href="/products"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 px-3 rounded hover:bg-[#2A4BF2] flex items-center justify-between"
-            >
-              <span>Products</span>
-              <span className="bg-white/15 px-2 py-0.5 rounded text-[10px]">
-                {products.length} Formulations
-              </span>
-            </Link>
-            <Link
-              href="/therapeutic-areas"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 px-3 rounded hover:bg-[#2A4BF2] pl-6 text-white/80"
-            >
-              ↳ Therapeutic Areas
-            </Link>
-            <Link
-              href="/about"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 px-3 rounded hover:bg-[#2A4BF2]"
-            >
-              About Us
-            </Link>
-            <Link
-              href="/quality"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 px-3 rounded hover:bg-[#2A4BF2]"
-            >
-              Quality &amp; QA
-            </Link>
+            <nav className="flex flex-col space-y-1 text-xs sm:text-[14px] font-medium tracking-wide">
+              <Link
+                href="/"
+                onClick={(e) => {
+                  setMobileMenuOpen(false)
+                  if (pathname === '/') {
+                    e.preventDefault()
+                    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+                  }
+                }}
+                className={`py-2.5 px-3 rounded transition-colors ${pathname === '/' ? 'bg-[#2A4BF2] text-white font-semibold' : 'hover:bg-[#2A4BF2]'}`}
+              >
+                Home
+              </Link>
+              <Link
+                href="/products"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`py-2.5 px-3 rounded transition-colors flex items-center justify-between ${pathname.startsWith('/products') ? 'bg-[#2A4BF2] text-white font-semibold' : 'hover:bg-[#2A4BF2]'}`}
+              >
+                <span>Products</span>
+                <span className="bg-white/15 px-2 py-0.5 rounded text-[10px] font-semibold">
+                  {products.length} Formulations
+                </span>
+              </Link>
+              <Link
+                href="/therapeutic-areas"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`py-2 px-3 pl-6 rounded transition-colors text-white/90 text-xs sm:text-[13px] ${pathname.startsWith('/therapeutic-areas') ? 'bg-[#2A4BF2] text-white font-semibold' : 'hover:bg-[#2A4BF2]'}`}
+              >
+                ↳ Therapeutic Specialties ({therapeuticAreas.length})
+              </Link>
+              <Link
+                href="/about"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`py-2.5 px-3 rounded transition-colors ${pathname === '/about' ? 'bg-[#2A4BF2] text-white font-semibold' : 'hover:bg-[#2A4BF2]'}`}
+              >
+                About Us
+              </Link>
+              <Link
+                href="/quality"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`py-2.5 px-3 rounded transition-colors ${pathname === '/quality' ? 'bg-[#2A4BF2] text-white font-semibold' : 'hover:bg-[#2A4BF2]'}`}
+              >
+                Quality &amp; QA
+              </Link>
+              <Link
+                href="/contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`py-2.5 px-3 rounded transition-colors ${pathname === '/contact' ? 'bg-[#2A4BF2] text-white font-semibold' : 'hover:bg-[#2A4BF2]'}`}
+              >
+                Contact
+              </Link>
+            </nav>
 
-            <Link
-              href="/contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 px-3 rounded hover:bg-[#2A4BF2]"
-            >
-              Contact
-            </Link>
-          </nav>
-        </div>
+            <div className="mt-4 pt-4 border-t border-white/15 flex items-center justify-between text-xs text-white/70">
+              <span>Hyderabad Facility</span>
+              <a href={`tel:+91${company.phone}`} className="text-white font-bold hover:underline">
+                {company.phoneDisplay}
+              </a>
+            </div>
+          </div>
+        </>
       )}
     </header>
   )
