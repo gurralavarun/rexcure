@@ -168,16 +168,16 @@ export function Hero() {
                 className="relative w-full h-full shrink-0 flex-none flex flex-col lg:block lg:aspect-[2.5/1] bg-white"
               >
                 {/* --------------------------------------------------------- */}
-                {/* TOP IMAGE SECTION (Photography Fully Visible on Mobile)    */}
+                {/* TOP IMAGE SECTION (Persons on Left Fully Preserved)        */}
                 {/* --------------------------------------------------------- */}
-                <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] md:aspect-[2.2/1] lg:absolute lg:inset-0 lg:aspect-auto overflow-hidden bg-[#F1F5F9]">
+                <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] md:aspect-[2.1/1] lg:absolute lg:inset-0 lg:aspect-auto overflow-hidden bg-[#F1F5F9]">
                   <Image
                     src={slide.image}
                     alt={slide.alt}
                     fill
                     priority={index === 1}
                     sizes="(max-width: 1024px) 100vw, 1560px"
-                    className="object-cover object-center lg:object-left"
+                    className="object-cover object-left"
                   />
 
                   {/* Desktop Only: Subtle Right-Side Gradient Overlay for text legibility */}
@@ -230,18 +230,16 @@ export function Hero() {
         </div>
 
         {/* ========================================================= */}
-        {/* MANUAL CONTROLS: PREVIOUS & NEXT ARROWS                    */}
-        {/* Mobile/Tablet: Positioned over image sides                 */}
-        {/* Desktop: Centered vertically on banner                     */}
+        {/* DESKTOP CONTROLS: PREVIOUS & NEXT SIDE ARROWS             */}
         {/* ========================================================= */}
         <button
           type="button"
           onClick={prevSlide}
           aria-label="Previous carousel slide"
           id="hero-carousel-prev"
-          className="absolute left-2.5 sm:left-4 lg:left-6 top-[24%] sm:top-[26%] md:top-[28%] lg:top-1/2 -translate-y-1/2 z-30 flex size-9 sm:size-11 lg:size-12 items-center justify-center rounded-full bg-white/90 hover:bg-white text-[#080878] hover:text-[#000066] shadow-md border border-[#D9DDE7] backdrop-blur-xs transition-all duration-200 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#304BEA]"
+          className="hidden lg:flex absolute left-6 top-1/2 -translate-y-1/2 z-30 size-12 items-center justify-center rounded-full bg-white/90 hover:bg-white text-[#080878] hover:text-[#000066] shadow-md border border-[#D9DDE7] backdrop-blur-xs transition-all duration-200 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#304BEA]"
         >
-          <ChevronLeft className="size-4 sm:size-5 lg:size-6" />
+          <ChevronLeft className="size-6" />
         </button>
 
         <button
@@ -249,15 +247,65 @@ export function Hero() {
           onClick={nextSlide}
           aria-label="Next carousel slide"
           id="hero-carousel-next"
-          className="absolute right-2.5 sm:right-4 lg:right-6 top-[24%] sm:top-[26%] md:top-[28%] lg:top-1/2 -translate-y-1/2 z-30 flex size-9 sm:size-11 lg:size-12 items-center justify-center rounded-full bg-white/90 hover:bg-white text-[#080878] hover:text-[#000066] shadow-md border border-[#D9DDE7] backdrop-blur-xs transition-all duration-200 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#304BEA]"
+          className="hidden lg:flex absolute right-6 top-1/2 -translate-y-1/2 z-30 size-12 items-center justify-center rounded-full bg-white/90 hover:bg-white text-[#080878] hover:text-[#000066] shadow-md border border-[#D9DDE7] backdrop-blur-xs transition-all duration-200 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#304BEA]"
         >
-          <ChevronRight className="size-4 sm:size-5 lg:size-6" />
+          <ChevronRight className="size-6" />
         </button>
 
         {/* ========================================================= */}
-        {/* SLIDE INDICATOR DOTS (Abbott Benchmark Indicator)         */}
+        {/* MOBILE & TABLET SLIDESHOW CONTROLLER PILL                  */}
+        {/* Positioned in bottom-right empty zone to keep people clear */}
+        {/* Includes Prev [<], Dots, and Next [>]                      */}
         {/* ========================================================= */}
-        <div className="absolute right-4 sm:right-6 top-[42%] sm:top-[46%] md:top-[48%] lg:top-auto lg:bottom-6 lg:left-1/2 lg:-translate-x-1/2 z-30 flex items-center gap-1.5 sm:gap-2 bg-white/90 backdrop-blur-xs px-2.5 py-1 rounded-full border border-[#D9DDE7] shadow-xs">
+        <div className="lg:hidden absolute right-3 sm:right-6 top-[calc(62.5vw-44px)] sm:top-[calc(56.25vw-48px)] md:top-[calc(47.6vw-50px)] z-30 flex items-center gap-1.5 bg-white/95 backdrop-blur-xs px-2.5 py-1.5 rounded-full border border-[#D9DDE7] shadow-md">
+          <button
+            type="button"
+            onClick={prevSlide}
+            aria-label="Previous slide"
+            className="flex size-6 sm:size-7 items-center justify-center rounded-full text-[#080878] hover:bg-[#EEF2F6] active:scale-90 transition-all cursor-pointer"
+          >
+            <ChevronLeft className="size-3.5 sm:size-4" />
+          </button>
+
+          <div className="flex items-center gap-1 sm:gap-1.5 px-0.5">
+            {slides.map((s, idx) => {
+              const activeSlideIdx = ((currentIndex - 1 + totalSlides) % totalSlides)
+              const isActive = activeSlideIdx === idx
+              return (
+                <button
+                  key={s.id}
+                  type="button"
+                  onClick={() => {
+                    if (isTransitioningRef.current) return
+                    isTransitioningRef.current = true
+                    setEnableTransition(true)
+                    setCurrentIndex(idx + 1)
+                  }}
+                  aria-label={`Go to slide ${idx + 1}: ${s.category}`}
+                  className={`transition-all duration-200 rounded-full cursor-pointer ${
+                    isActive
+                      ? 'w-4 sm:w-5 h-1.5 sm:h-2 bg-[#080878]'
+                      : 'size-1.5 sm:size-2 bg-[#94A3B8] hover:bg-[#64748B]'
+                  }`}
+                />
+              );
+            })}
+          </div>
+
+          <button
+            type="button"
+            onClick={nextSlide}
+            aria-label="Next slide"
+            className="flex size-6 sm:size-7 items-center justify-center rounded-full text-[#080878] hover:bg-[#EEF2F6] active:scale-90 transition-all cursor-pointer"
+          >
+            <ChevronRight className="size-3.5 sm:size-4" />
+          </button>
+        </div>
+
+        {/* ========================================================= */}
+        {/* DESKTOP INDICATOR DOTS (Centered at bottom of banner)     */}
+        {/* ========================================================= */}
+        <div className="hidden lg:flex absolute bottom-6 left-1/2 -translate-x-1/2 z-30 items-center gap-2 bg-white/90 backdrop-blur-xs px-3 py-1.5 rounded-full border border-[#D9DDE7] shadow-xs">
           {slides.map((s, idx) => {
             const activeSlideIdx = ((currentIndex - 1 + totalSlides) % totalSlides)
             const isActive = activeSlideIdx === idx
@@ -274,7 +322,7 @@ export function Hero() {
                 aria-label={`Go to slide ${idx + 1}: ${s.category}`}
                 className={`transition-all duration-200 rounded-full cursor-pointer ${
                   isActive
-                    ? 'w-5 sm:w-6 h-2 bg-[#080878]'
+                    ? 'w-6 h-2 bg-[#080878]'
                     : 'size-2 bg-[#94A3B8] hover:bg-[#64748B]'
                 }`}
               />
