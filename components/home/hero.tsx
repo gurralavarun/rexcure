@@ -199,22 +199,22 @@ export function Hero() {
                       <span>{slide.category}</span>
                     </div>
 
-                    {/* Slide Heading - Responsively proportioned */}
-                    <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-[38px] xl:text-[44px] font-bold tracking-tight text-[#080878] leading-[1.2]">
+                    {/* Slide Heading - Responsively scaled (46-58px on desktop) */}
+                    <h1 className="text-[clamp(1.75rem,3.8vw,3.125rem)] font-bold tracking-tight text-[#080878] leading-[1.18]">
                       {slide.heading}
                     </h1>
 
                     {/* Slide Description */}
-                    <p className="mt-2.5 sm:mt-3 lg:mt-4 text-xs sm:text-sm lg:text-[16px] text-[#475569] font-normal leading-relaxed max-w-xl">
+                    <p className="mt-2.5 sm:mt-3.5 lg:mt-4 text-[15px] sm:text-[16px] lg:text-[17px] text-[#475569] font-normal leading-[1.65] max-w-xl">
                       {slide.description}
                     </p>
 
-                    {/* Abbott CTA Button */}
-                    <div className="mt-4 sm:mt-6 lg:mt-8 flex items-center gap-4">
+                    {/* CTA Button */}
+                    <div className="mt-5 sm:mt-6 lg:mt-8 flex items-center gap-4">
                       <Link
                         href={slide.ctaHref}
                         id={`hero-cta-${slide.id}`}
-                        className="group inline-flex items-center justify-center gap-2 rounded-md bg-[#080878] hover:bg-[#000066] text-white px-5 sm:px-6 py-2.5 sm:py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider shadow-md hover:shadow-lg transition-all duration-200 border border-[#080878] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#304BEA] active:scale-[0.98]"
+                        className="group inline-flex items-center justify-center gap-2 rounded bg-[#080878] hover:bg-[#000066] text-white px-5 sm:px-6 py-2.5 sm:py-3.5 text-xs sm:text-sm font-semibold uppercase tracking-wider shadow-sm hover:shadow-md transition-all duration-200 border border-[#080878] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#304BEA] active:scale-[0.98]"
                       >
                         <span>{slide.ctaText}</span>
                         <ArrowRight className="size-3.5 sm:size-4 transition-transform duration-200 group-hover:translate-x-1" />
@@ -230,16 +230,16 @@ export function Hero() {
         </div>
 
         {/* ========================================================= */}
-        {/* DESKTOP CONTROLS: PREVIOUS & NEXT SIDE ARROWS             */}
+        {/* PREVIOUS & NEXT SIDE ARROWS (Responsive on all screens)   */}
         {/* ========================================================= */}
         <button
           type="button"
           onClick={prevSlide}
           aria-label="Previous carousel slide"
           id="hero-carousel-prev"
-          className="hidden lg:flex absolute left-6 top-1/2 -translate-y-1/2 z-30 size-12 items-center justify-center rounded-full bg-white/90 hover:bg-white text-[#080878] hover:text-[#000066] shadow-md border border-[#D9DDE7] backdrop-blur-xs transition-all duration-200 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#304BEA]"
+          className="flex absolute left-2.5 sm:left-6 top-[28%] sm:top-1/2 -translate-y-1/2 z-30 size-8 sm:size-12 items-center justify-center rounded-full bg-white/95 hover:bg-white text-[#080878] hover:text-[#000066] shadow-md border border-[#D9DDE7] backdrop-blur-xs transition-all duration-200 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#304BEA] cursor-pointer"
         >
-          <ChevronLeft className="size-6" />
+          <ChevronLeft className="size-4 sm:size-6" />
         </button>
 
         <button
@@ -247,88 +247,10 @@ export function Hero() {
           onClick={nextSlide}
           aria-label="Next carousel slide"
           id="hero-carousel-next"
-          className="hidden lg:flex absolute right-6 top-1/2 -translate-y-1/2 z-30 size-12 items-center justify-center rounded-full bg-white/90 hover:bg-white text-[#080878] hover:text-[#000066] shadow-md border border-[#D9DDE7] backdrop-blur-xs transition-all duration-200 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#304BEA]"
+          className="flex absolute right-2.5 sm:right-6 top-[28%] sm:top-1/2 -translate-y-1/2 z-30 size-8 sm:size-12 items-center justify-center rounded-full bg-white/95 hover:bg-white text-[#080878] hover:text-[#000066] shadow-md border border-[#D9DDE7] backdrop-blur-xs transition-all duration-200 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#304BEA] cursor-pointer"
         >
-          <ChevronRight className="size-6" />
+          <ChevronRight className="size-4 sm:size-6" />
         </button>
-
-        {/* ========================================================= */}
-        {/* MOBILE & TABLET SLIDESHOW CONTROLLER PILL                  */}
-        {/* Positioned in bottom-right empty zone to keep people clear */}
-        {/* Includes Prev [<], Dots, and Next [>]                      */}
-        {/* ========================================================= */}
-        <div className="lg:hidden absolute right-3 sm:right-6 top-[calc(62.5vw-44px)] sm:top-[calc(56.25vw-48px)] md:top-[calc(47.6vw-50px)] z-30 flex items-center gap-1.5 bg-white/95 backdrop-blur-xs px-2.5 py-1.5 rounded-full border border-[#D9DDE7] shadow-md">
-          <button
-            type="button"
-            onClick={prevSlide}
-            aria-label="Previous slide"
-            className="flex size-6 sm:size-7 items-center justify-center rounded-full text-[#080878] hover:bg-[#EEF2F6] active:scale-90 transition-all cursor-pointer"
-          >
-            <ChevronLeft className="size-3.5 sm:size-4" />
-          </button>
-
-          <div className="flex items-center gap-1 sm:gap-1.5 px-0.5">
-            {slides.map((s, idx) => {
-              const activeSlideIdx = ((currentIndex - 1 + totalSlides) % totalSlides)
-              const isActive = activeSlideIdx === idx
-              return (
-                <button
-                  key={s.id}
-                  type="button"
-                  onClick={() => {
-                    if (isTransitioningRef.current) return
-                    isTransitioningRef.current = true
-                    setEnableTransition(true)
-                    setCurrentIndex(idx + 1)
-                  }}
-                  aria-label={`Go to slide ${idx + 1}: ${s.category}`}
-                  className={`transition-all duration-200 rounded-full cursor-pointer ${
-                    isActive
-                      ? 'w-4 sm:w-5 h-1.5 sm:h-2 bg-[#080878]'
-                      : 'size-1.5 sm:size-2 bg-[#94A3B8] hover:bg-[#64748B]'
-                  }`}
-                />
-              );
-            })}
-          </div>
-
-          <button
-            type="button"
-            onClick={nextSlide}
-            aria-label="Next slide"
-            className="flex size-6 sm:size-7 items-center justify-center rounded-full text-[#080878] hover:bg-[#EEF2F6] active:scale-90 transition-all cursor-pointer"
-          >
-            <ChevronRight className="size-3.5 sm:size-4" />
-          </button>
-        </div>
-
-        {/* ========================================================= */}
-        {/* DESKTOP INDICATOR DOTS (Centered at bottom of banner)     */}
-        {/* ========================================================= */}
-        <div className="hidden lg:flex absolute bottom-6 left-1/2 -translate-x-1/2 z-30 items-center gap-2 bg-white/90 backdrop-blur-xs px-3 py-1.5 rounded-full border border-[#D9DDE7] shadow-xs">
-          {slides.map((s, idx) => {
-            const activeSlideIdx = ((currentIndex - 1 + totalSlides) % totalSlides)
-            const isActive = activeSlideIdx === idx
-            return (
-              <button
-                key={s.id}
-                type="button"
-                onClick={() => {
-                  if (isTransitioningRef.current) return
-                  isTransitioningRef.current = true
-                  setEnableTransition(true)
-                  setCurrentIndex(idx + 1)
-                }}
-                aria-label={`Go to slide ${idx + 1}: ${s.category}`}
-                className={`transition-all duration-200 rounded-full cursor-pointer ${
-                  isActive
-                    ? 'w-6 h-2 bg-[#080878]'
-                    : 'size-2 bg-[#94A3B8] hover:bg-[#64748B]'
-                }`}
-              />
-            )
-          })}
-        </div>
 
       </div>
 
@@ -336,7 +258,7 @@ export function Hero() {
       {/* 2. ESTABLISHED PHARMACEUTICAL STATISTICS & GOVERNANCE BAR */}
       {/* ========================================================= */}
       <div className="bg-[#F5F6FA] border-t border-[#D9DDE7] py-6 sm:py-8 font-sans">
-        <div className="mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-12 xl:px-16">
+        <div className="mx-auto w-full max-w-[1560px] px-4 sm:px-10 lg:px-12 xl:px-16">
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-6 lg:gap-8 divide-y-0 sm:divide-x divide-[#D9DDE7]">
             
             {/* Stat 1: Marketed Formulations */}

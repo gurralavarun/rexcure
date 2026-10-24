@@ -46,6 +46,8 @@ function ProductCatalogueContent({ id = 'catalogue' }: { id?: string }) {
       else if (p.form.toLowerCase().includes('syrup') || p.form.toLowerCase().includes('suspension'))
         forms.add('Syrups & Suspensions')
       else if (p.form.toLowerCase().includes('softgel')) forms.add('Softgels')
+      else if (p.form.toLowerCase().includes('injection') || p.form.toLowerCase().includes('iv'))
+        forms.add('Injections (IV)')
       else forms.add(p.form)
     })
     return Array.from(forms)
@@ -74,9 +76,10 @@ function ProductCatalogueContent({ id = 'catalogue' }: { id?: string }) {
           (product.form.toLowerCase().includes('syrup') ||
             product.form.toLowerCase().includes('suspension'))) ||
         (selectedForm === 'Softgels' && product.form.toLowerCase().includes('softgel')) ||
-        (selectedForm === 'Syrups' &&
-          (product.form.toLowerCase().includes('syrup') ||
-            product.form.toLowerCase().includes('suspension')))
+        (selectedForm === 'Injections (IV)' &&
+          (product.form.toLowerCase().includes('injection') ||
+            product.form.toLowerCase().includes('iv'))) ||
+        product.form === selectedForm
 
       return matchesQuery && matchesTherapy && matchesForm
     })
@@ -91,9 +94,9 @@ function ProductCatalogueContent({ id = 'catalogue' }: { id?: string }) {
 
   return (
     <section id={id} className="scroll-mt-24 bg-[#F5F6FA] py-14 lg:py-20 border-b border-[#D9DDE7] font-sans">
-      <div className="mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-12 xl:px-16">
+      <div className="mx-auto w-full max-w-[1560px] px-4 sm:px-8 lg:px-12 xl:px-16">
         
-        {/* Abbott Reference Screenshot 4: Segmented Tab Bar */}
+        {/* Segmented Tab Bar */}
         <div className="mb-6 flex overflow-x-auto flex-nowrap sm:flex-wrap items-center border-b border-[#D9DDE7] scrollbar-none">
           <button
             type="button"
@@ -140,7 +143,7 @@ function ProductCatalogueContent({ id = 'catalogue' }: { id?: string }) {
             <button
               type="button"
               onClick={() => setSelectedTherapy('all')}
-              className={`shrink-0 rounded px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
+              className={`shrink-0 rounded-lg px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
                 selectedTherapy === 'all'
                   ? 'bg-[#080878] text-white'
                   : 'bg-white border border-[#D9DDE7] text-[#202124] hover:border-[#080878]'
@@ -153,7 +156,7 @@ function ProductCatalogueContent({ id = 'catalogue' }: { id?: string }) {
                 key={area.slug}
                 type="button"
                 onClick={() => setSelectedTherapy(area.slug)}
-                className={`shrink-0 rounded px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
+                className={`shrink-0 rounded-lg px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
                   selectedTherapy === area.slug
                     ? 'bg-[#080878] text-white'
                     : 'bg-white border border-[#D9DDE7] text-[#202124] hover:border-[#080878]'
@@ -171,7 +174,7 @@ function ProductCatalogueContent({ id = 'catalogue' }: { id?: string }) {
             <button
               type="button"
               onClick={() => setSelectedForm('all')}
-              className={`shrink-0 rounded px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
+              className={`shrink-0 rounded-lg px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
                 selectedForm === 'all'
                   ? 'bg-[#080878] text-white'
                   : 'bg-white border border-[#D9DDE7] text-[#202124] hover:border-[#080878]'
@@ -184,7 +187,7 @@ function ProductCatalogueContent({ id = 'catalogue' }: { id?: string }) {
                 key={form}
                 type="button"
                 onClick={() => setSelectedForm(form)}
-                className={`shrink-0 rounded px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
+                className={`shrink-0 rounded-lg px-3.5 py-1.5 text-xs font-bold uppercase tracking-wider transition-colors ${
                   selectedForm === form
                     ? 'bg-[#080878] text-white'
                     : 'bg-white border border-[#D9DDE7] text-[#202124] hover:border-[#080878]'
@@ -197,7 +200,7 @@ function ProductCatalogueContent({ id = 'catalogue' }: { id?: string }) {
         )}
 
         {/* Corporate Search & Filter Bar */}
-        <div className="mb-8 rounded border border-[#D9DDE7] bg-white p-4 shadow-sm">
+        <div className="mb-8 rounded-xl border border-[#D9DDE7] bg-white p-4 shadow-sm">
           <div className="flex flex-col gap-3.5 lg:flex-row lg:items-center lg:justify-between">
             {/* Search Input */}
             <div className="relative flex-1 max-w-xl">
@@ -209,7 +212,7 @@ function ProductCatalogueContent({ id = 'catalogue' }: { id?: string }) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search by product name, active molecule (e.g. Glimepiride, Rabeprazole, Amoxicillin)..."
-                className="w-full rounded border border-[#D9DDE7] bg-[#F5F6FA] py-2 pl-10 pr-9 text-xs sm:text-sm text-[#202124] placeholder:text-[#555B66] focus:border-[#080878] focus:bg-white focus:outline-none"
+                className="w-full rounded-lg border border-[#D9DDE7] bg-[#F5F6FA] py-2 pl-10 pr-9 text-xs sm:text-sm text-[#202124] placeholder:text-[#555B66] focus:border-[#080878] focus:bg-white focus:outline-none"
                 aria-label="Search pharmaceutical formulations"
               />
               {searchQuery && (
@@ -232,7 +235,7 @@ function ProductCatalogueContent({ id = 'catalogue' }: { id?: string }) {
                 <select
                   value={selectedTherapy}
                   onChange={(e) => setSelectedTherapy(e.target.value)}
-                  className="rounded border border-[#D9DDE7] bg-white px-3 py-1.5 text-xs font-medium text-[#202124] focus:border-[#080878] focus:outline-none"
+                  className="rounded-lg border border-[#D9DDE7] bg-[#F5F6FA] px-3 py-1.5 text-xs font-medium text-[#202124] focus:border-[#080878] focus:outline-none"
                   aria-label="Filter by therapeutic area"
                 >
                   <option value="all">All Specialties ({products.length})</option>
@@ -249,7 +252,7 @@ function ProductCatalogueContent({ id = 'catalogue' }: { id?: string }) {
                 <select
                   value={selectedForm}
                   onChange={(e) => setSelectedForm(e.target.value)}
-                  className="rounded border border-[#D9DDE7] bg-white px-3 py-1.5 text-xs font-medium text-[#202124] focus:border-[#080878] focus:outline-none"
+                  className="rounded-lg border border-[#D9DDE7] bg-[#F5F6FA] px-3 py-1.5 text-xs font-medium text-[#202124] focus:border-[#080878] focus:outline-none"
                   aria-label="Filter by dosage form"
                 >
                   <option value="all">All Forms</option>
@@ -265,7 +268,7 @@ function ProductCatalogueContent({ id = 'catalogue' }: { id?: string }) {
                 <button
                   type="button"
                   onClick={clearFilters}
-                  className="rounded bg-[#DDE2FF] px-3 py-1.5 text-xs font-bold text-[#080878] hover:bg-[#CCD5FF] transition-colors"
+                  className="rounded-lg bg-[#DDE2FF] px-3 py-1.5 text-xs font-bold text-[#080878] hover:bg-[#CCD5FF] transition-colors"
                 >
                   Reset Filters
                 </button>
@@ -278,9 +281,9 @@ function ProductCatalogueContent({ id = 'catalogue' }: { id?: string }) {
           </div>
         </div>
 
-        {/* 4-Column Professional Pharmaceutical Directory Grid */}
+        {/* 3-Column Premium Pharmaceutical Directory Grid */}
         {filteredProducts.length === 0 ? (
-          <div className="rounded border border-[#D9DDE7] bg-white p-12 text-center">
+          <div className="rounded-xl border border-[#D9DDE7] bg-white p-12 text-center">
             <Search className="size-8 text-[#080878] mx-auto mb-2" />
             <h3 className="text-base font-bold text-[#080878]">No Matching Formulations Found</h3>
             <p className="mt-1 text-xs text-[#555B66]">
@@ -295,7 +298,7 @@ function ProductCatalogueContent({ id = 'catalogue' }: { id?: string }) {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-7 sm:grid-cols-2 lg:grid-cols-3">
             {filteredProducts.map((product) => (
               <ProductDirectoryCard key={product.slug} product={product} />
             ))}
@@ -310,48 +313,49 @@ function ProductDirectoryCard({ product }: { product: Product }) {
   const displayImage = product.primaryImage || product.images[0]
 
   return (
-    <article className="group flex flex-col justify-between overflow-hidden rounded border border-[#D9DDE7] bg-white transition-all duration-200 hover:border-[#080878] hover:shadow-md">
+    <Link
+      href={`/products/${product.slug}`}
+      className="group flex flex-col justify-between overflow-hidden rounded-xl border border-[#D9DDE7] bg-white transition-all duration-200 hover:border-[#CCD5FF] hover:shadow-md cursor-pointer"
+    >
       <div>
-        {/* Product Packaging Image (1:1 Ratio, object-fit: contain on white) */}
-        <div className="relative aspect-square w-full overflow-hidden bg-white border-b border-[#F5F6FA] p-5 flex items-center justify-center">
+        {/* Product Packaging Image (Controlled Frame, object-fit: contain on pale blue) */}
+        <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#F5F6FA] border-b border-[#D9DDE7] p-5 flex items-center justify-center">
           <Image
             src={displayImage}
             alt={`${product.name} packaging`}
             width={450}
             height={450}
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="h-full w-full object-contain transition-transform duration-200 group-hover:scale-105"
           />
 
           {/* Therapeutic Category Badge */}
           <div className="absolute left-3 top-3">
-            <span className="rounded bg-[#DDE2FF] border border-[#CCD5FF] px-2 py-0.5 text-[10px] font-semibold text-[#080878] uppercase tracking-wider">
+            <span className="rounded-md bg-[#DDE2FF] border border-[#CCD5FF] px-2 py-0.5 text-[10px] font-semibold text-[#080878] uppercase tracking-wider">
               {product.category}
             </span>
           </div>
 
           {/* Prescription Schedule Tag */}
           <div className="absolute right-3 top-3">
-            <span className="rounded bg-[#F5F6FA] border border-[#D9DDE7] px-2 py-0.5 text-[10px] font-medium text-[#475569]">
+            <span className="rounded-md bg-[#F5F6FA] border border-[#D9DDE7] px-2 py-0.5 text-[10px] font-medium text-[#555B66]">
               {product.prescription === 'Physician guided' ? 'Schedule H Rx' : 'OTC Supportive'}
             </span>
           </div>
         </div>
 
-        {/* Corporate Pharmaceutical Content */}
-        <div className="p-4">
-          <h3 className="text-[17px] font-semibold tracking-tight text-[#080878] group-hover:text-[#304BEA] transition-colors">
-            <Link href={`/products/${product.slug}`}>
-              {product.name}
-            </Link>
+        {/* Corporate Pharmaceutical Content (19-23px bold product name) */}
+        <div className="p-5">
+          <h3 className="text-[20px] sm:text-[21px] font-bold tracking-tight text-[#080878] group-hover:text-[#2A4BF2] transition-colors leading-tight">
+            {product.name}
           </h3>
 
-          <p className="mt-1 text-xs font-normal text-[#475569] truncate" title={product.genericName}>
+          <p className="mt-1.5 text-xs sm:text-[13px] font-normal text-[#555B66] truncate" title={product.genericName}>
             {product.genericName}
           </p>
 
-          <div className="mt-2.5 flex items-center gap-2 text-xs text-[#64748b]">
-            <span className="rounded bg-[#F5F6FA] px-2 py-0.5 font-medium text-[#080878] border border-[#D9DDE7]">
+          <div className="mt-3 flex items-center gap-2 text-xs text-[#555B66]">
+            <span className="rounded-md bg-[#F5F6FA] px-2.5 py-0.5 font-semibold text-[#080878] border border-[#D9DDE7]">
               {product.form}
             </span>
             <span>•</span>
@@ -361,19 +365,16 @@ function ProductDirectoryCard({ product }: { product: Product }) {
       </div>
 
       {/* Directory Footer: Packaging & Details Link */}
-      <div className="border-t border-[#F5F6FA] bg-[#F5F6FA] px-4 py-2.5 flex items-center justify-between text-xs">
-        <span className="text-[11px] font-medium text-[#64748b] truncate max-w-[130px]">
+      <div className="border-t border-[#DDE2FF]/60 bg-[#F5F6FA] px-5 py-3 flex items-center justify-between text-xs">
+        <span className="text-[11.5px] font-medium text-[#555B66] truncate max-w-[150px]">
           {product.pack}
         </span>
 
-        <Link
-          href={`/products/${product.slug}`}
-          className="inline-flex items-center gap-1 font-semibold text-[#080878] group-hover:text-[#304BEA] transition-colors uppercase tracking-wider text-xs"
-        >
+        <div className="inline-flex items-center gap-1 font-semibold text-[#080878] group-hover:text-[#2A4BF2] transition-colors uppercase tracking-wider text-xs">
           <span>View Details</span>
           <ArrowRight className="size-3" />
-        </Link>
+        </div>
       </div>
-    </article>
+    </Link>
   )
 }

@@ -48,7 +48,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="relative min-h-screen bg-white">
+    <div className="min-h-screen bg-white font-sans">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
@@ -62,7 +62,7 @@ export default function HomePage() {
 
       <SiteHeader />
 
-      <main>
+      <main className="w-full max-w-full overflow-x-hidden">
         {/* Section 4: Homepage Hero */}
         <Hero />
 

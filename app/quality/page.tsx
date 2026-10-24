@@ -56,7 +56,7 @@ export default function QualityPage() {
       <SiteHeader />
 
       <main>
-        {/* Abbott-Style Page Banner */}
+        {/* Page Banner */}
         <PageBanner
           breadcrumbs={[
             { label: 'Home', href: '/' },
@@ -71,20 +71,20 @@ export default function QualityPage() {
 
         {/* Quality Split Hero */}
         <section className="py-16 lg:py-24 border-b border-[#D9DDE7] bg-white">
-          <div className="mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-12 xl:px-16">
+          <div className="mx-auto w-full max-w-[1560px] px-4 sm:px-8 lg:px-12 xl:px-16">
             <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
               <div className="lg:col-span-6">
-                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#080878] mb-2.5 flex items-center gap-2">
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#080878] mb-3 flex items-center gap-2">
                   <span className="h-0.5 w-6 bg-[#080878]" />
                   <span>Analytical Diligence</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-semibold text-[#080878] sm:text-4xl leading-[1.2]">
+                <h2 className="text-[clamp(1.75rem,3.2vw,2.375rem)] font-bold text-[#080878] leading-[1.2]">
                   Analytical Precision &amp; Pharmacopoeial Integrity
                 </h2>
-                <p className="mt-5 text-base sm:text-[17px] leading-relaxed text-[#475569] font-normal">
+                <p className="mt-5 text-[15px] sm:text-[16px] leading-relaxed text-[#475569] font-normal">
                   Our formulations comply with the standards set forth by the Indian Pharmacopoeia (IP). Every released batch is accompanied by a comprehensive Certificate of Analysis (CoA) validating chemical identity, assay potency, content uniformity, and microbial limits.
                 </p>
-                <div className="mt-8 space-y-3.5 text-xs sm:text-sm text-[#334155]">
+                <div className="mt-8 space-y-3.5 text-xs sm:text-sm text-[#202124]">
                   <div className="flex items-start gap-2.5">
                     <CheckCircle2 className="size-5 text-[#080878] shrink-0 mt-0.5" />
                     <span>Independent Quality Assurance (QA) unit with full batch release authority</span>
@@ -101,8 +101,8 @@ export default function QualityPage() {
               </div>
 
               <div className="lg:col-span-6">
-                <div className="overflow-hidden rounded-md border border-[#D9DDE7] bg-white p-2 shadow-sm">
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded bg-[#F5F6FA]">
+                <div className="overflow-hidden rounded-xl border border-[#D9DDE7] bg-white p-2 shadow-sm">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-[#F5F6FA]">
                     <Image
                       src="/images/quality-assurance.jpg"
                       alt="RexCure Quality Control Analytical HPLC Laboratory"
@@ -119,25 +119,25 @@ export default function QualityPage() {
 
         {/* 6-Stage Quality Control Protocol */}
         <section className="bg-[#F5F6FA] py-16 lg:py-24 border-b border-[#D9DDE7]">
-          <div className="mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-12 xl:px-16">
+          <div className="mx-auto w-full max-w-[1560px] px-4 sm:px-8 lg:px-12 xl:px-16">
             <div className="max-w-2xl mb-12">
               <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#080878] mb-2 flex items-center gap-2">
                 <span className="h-0.5 w-6 bg-[#080878]" />
                 <span>Analytical Workflow</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-semibold text-[#080878]">
+              <h2 className="text-[clamp(1.75rem,3.2vw,2.375rem)] font-bold text-[#080878]">
                 Our 6-Stage Multi-Barrier Quality Protocol
               </h2>
-              <p className="mt-3 text-base text-[#475569] font-normal">
+              <p className="mt-3 text-[15px] sm:text-[16px] text-[#475569] font-normal">
                 How we assure consistent bio-equivalence and purity for clinicians and patients.
               </p>
             </div>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {qualitySteps.map((step) => (
-                <div key={step.step} className="rounded border border-[#D9DDE7] bg-white p-6 shadow-2xs hover:border-[#080878] transition-all">
+                <div key={step.step} className="rounded-xl border border-[#D9DDE7] bg-white p-6 shadow-xs hover:border-[#080878] transition-all">
                   <span className="text-2xl font-bold text-[#080878]">{step.step}</span>
-                  <h3 className="mt-2.5 text-base font-semibold text-[#080878]">{step.title}</h3>
+                  <h3 className="mt-2.5 text-base font-bold text-[#080878]">{step.title}</h3>
                   <p className="mt-2 text-xs sm:text-sm leading-relaxed text-[#475569]">{step.description}</p>
                 </div>
               ))}
@@ -148,7 +148,7 @@ export default function QualityPage() {
         {/* Regulatory Inquiry Callout */}
         <section className="py-16 bg-white text-center">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-semibold text-[#080878] sm:text-3xl">
+            <h2 className="text-2xl font-bold text-[#080878] sm:text-3xl">
               Request Analytical Dossiers or Certificates of Analysis
             </h2>
             <p className="mt-3 text-sm sm:text-base text-[#475569]">

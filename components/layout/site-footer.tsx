@@ -7,7 +7,7 @@ export function SiteFooter() {
 
   return (
     <footer className="w-full bg-[#080878] text-white font-sans">
-      {/* MAIN ABBOTT-STYLE FOOTER CONTENT: SINGLE HEADINGS ONLY (Screenshot 2) */}
+      {/* MAIN FOOTER CONTENT - PRESERVED LAYOUT & APPROVED COLORS (IMAGE 1) */}
       <div className="py-14 lg:py-18 px-6 sm:px-10 lg:px-12 xl:px-16">
         <div className="mx-auto w-full max-w-[1560px]">
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-12">
@@ -17,11 +17,11 @@ export function SiteFooter() {
               <SiteLogo variant="dark" />
             </div>
 
-            {/* Middle: Columns of Single Headings Only (Abbott Benchmark) */}
+            {/* Middle: Columns of Navigation Headings (Typography Refined: 14px, weight 500, clean line-height) */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-10 lg:gap-14 flex-1 max-w-3xl">
               
               {/* Column 1 */}
-              <div className="flex flex-col space-y-3 sm:space-y-3.5 text-xs sm:text-[13px] font-medium uppercase tracking-wider text-white/90">
+              <div className="flex flex-col space-y-3 sm:space-y-3.5 text-[13px] sm:text-[14px] font-medium uppercase tracking-[0.05em] leading-normal text-white/90">
                 <Link href="/about" className="hover:text-white transition-colors">
                   ABOUT US
                 </Link>
@@ -37,7 +37,7 @@ export function SiteFooter() {
               </div>
 
               {/* Column 2 */}
-              <div className="flex flex-col space-y-3 sm:space-y-3.5 text-xs sm:text-[13px] font-medium uppercase tracking-wider text-white/90">
+              <div className="flex flex-col space-y-3 sm:space-y-3.5 text-[13px] sm:text-[14px] font-medium uppercase tracking-[0.05em] leading-normal text-white/90">
                 <Link href="/contact" className="hover:text-white transition-colors">
                   INSTITUTIONAL SUPPLY
                 </Link>
@@ -53,7 +53,7 @@ export function SiteFooter() {
               </div>
 
               {/* Column 3 */}
-              <div className="flex flex-col space-y-3 sm:space-y-3.5 text-xs sm:text-[13px] font-medium uppercase tracking-wider text-white/90 col-span-2 sm:col-span-1">
+              <div className="flex flex-col space-y-3 sm:space-y-3.5 text-[13px] sm:text-[14px] font-medium uppercase tracking-[0.05em] leading-normal text-white/90 col-span-2 sm:col-span-1">
                 <Link href="/sitemap.xml" className="hover:text-white transition-colors">
                   SITE MAP
                 </Link>
@@ -70,7 +70,7 @@ export function SiteFooter() {
 
             </div>
 
-            {/* Right: Social Media Icons (Abbott Screenshot 2 Style) */}
+            {/* Right: Social Media Icons (Preserved from Image 1) */}
             <div className="shrink-0 flex items-center gap-3 pt-2 lg:pt-0">
               <a
                 href="https://facebook.com"
@@ -121,13 +121,13 @@ export function SiteFooter() {
 
           </div>
 
-          {/* Copyright & Trademark Notice (Directly matching Abbott Screenshot 2) */}
-          <div className="mt-14 pt-8 border-t border-white/15 text-[11px] text-white/70 leading-relaxed space-y-2">
-            <p className="font-medium text-white/90">
-              &copy; {currentYear} {company.shortName || 'RexCure'}. All Rights Reserved. Please read the Legal Notice for further details.
+          {/* Copyright & Trademark Notice (Refined Typography: 13-14px copyright, readable disclaimer) */}
+          <div className="mt-14 pt-8 border-t border-white/15 text-xs sm:text-[13px] text-white/70 leading-relaxed space-y-2.5">
+            <p className="font-semibold text-white/90 text-xs sm:text-[13px]">
+              &copy; {currentYear} {company.shortName || 'RexCure'} Pharma. All Rights Reserved. Please read the Legal Notice for further details.
             </p>
-            <p className="max-w-4xl text-white/60">
-              Unless otherwise specified, all product and service names appearing in this Internet site are trademarks owned by or licensed to {company.shortName || 'RexCure'}, its subsidiaries or affiliates. No use of any {company.shortName || 'RexCure'} trademark, trade name, or trade dress in this site may be made without the prior written authorization of {company.shortName || 'RexCure'}, except to identify the product or services of the company.
+            <p className="max-w-4xl text-[12px] sm:text-[13px] leading-relaxed text-white/60 font-normal">
+              Unless otherwise specified, all product and service names appearing in this Internet site are trademarks owned by or licensed to {company.shortName || 'RexCure'} Pharma, its subsidiaries or affiliates. No use of any {company.shortName || 'RexCure'} Pharma trademark, trade name, or trade dress in this site may be made without the prior written authorization of {company.shortName || 'RexCure'} Pharma, except to identify the product or services of the company.
             </p>
           </div>
 

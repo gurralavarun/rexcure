@@ -103,7 +103,6 @@ export default async function ProductPage({ params }: PageProps) {
     notFound()
   }
 
-  const therapeuticInfo = therapeuticAreas.find((t) => t.slug === product.therapeuticSlug)
   const relatedProducts = products
     .filter((p) => p.therapeuticSlug === product.therapeuticSlug && p.slug !== product.slug)
     .slice(0, 3)
@@ -145,8 +144,8 @@ export default async function ProductPage({ params }: PageProps) {
 
       <SiteHeader />
 
-      {/* Abbott-Style Breadcrumb Strip */}
-      <div className="w-full bg-[#DDE2FF] border-b border-[#CCD5FF] py-2.5 px-6 sm:px-10 lg:px-12 xl:px-16 text-xs sm:text-[13px] font-bold tracking-wider uppercase text-[#555B66]">
+      {/* Corporate Breadcrumb Strip */}
+      <div className="w-full bg-[#DDE2FF] border-b border-[#CCD5FF] py-2.5 px-4 sm:px-8 lg:px-12 xl:px-16 text-xs sm:text-[13px] font-semibold tracking-wider uppercase text-[#555B66]">
         <div className="mx-auto w-full max-w-[1560px]">
           <nav aria-label="Breadcrumb" className="flex items-center flex-wrap gap-1.5">
             <Link href="/" className="hover:text-[#080878] transition-colors">
@@ -164,14 +163,14 @@ export default async function ProductPage({ params }: PageProps) {
               {product.therapeuticArea.toUpperCase()}
             </Link>
             <ChevronRight className="size-3.5 text-[#555B66]/60 shrink-0" />
-            <span className="text-[#080878] font-semibold truncate">
+            <span className="text-[#080878] font-bold truncate">
               {product.name}
             </span>
           </nav>
         </div>
       </div>
 
-      <main className="mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-12 xl:px-16 py-8 lg:py-12">
+      <main className="mx-auto w-full max-w-[1560px] px-4 sm:px-8 lg:px-12 xl:px-16 py-8 lg:py-12">
         {/* Back Link */}
         <div className="mb-6">
           <Link
@@ -200,20 +199,20 @@ export default async function ProductPage({ params }: PageProps) {
             <div className="flex flex-wrap items-center gap-2 mb-3">
               <Link
                 href={`/therapeutic-areas/${product.therapeuticSlug}`}
-                className="rounded border border-[#CCD5FF] bg-[#DDE2FF] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#080878] hover:bg-[#CCD5FF] transition-colors"
+                className="rounded-md border border-[#CCD5FF] bg-[#DDE2FF] px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#080878] hover:bg-[#CCD5FF] transition-colors"
               >
                 {product.therapeuticArea}
               </Link>
-              <span className="rounded border border-[#D9DDE7] bg-[#F5F6FA] px-3 py-1 text-xs font-medium text-[#475569]">
+              <span className="rounded-md border border-[#D9DDE7] bg-[#F5F6FA] px-3 py-1 text-xs font-medium text-[#475569]">
                 {product.form}
               </span>
-              <span className="rounded border border-[#D9DDE7] bg-white px-3 py-1 text-xs font-semibold text-[#080878]">
+              <span className="rounded-md border border-[#D9DDE7] bg-white px-3 py-1 text-xs font-semibold text-[#080878]">
                 {product.prescription === 'Physician guided' ? 'Schedule H Rx' : 'OTC Supportive Care'}
               </span>
             </div>
 
             {/* Product Name (H1: 40-52px) */}
-            <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight text-[#080878] leading-[1.18]">
+            <h1 className="text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#080878] leading-[1.18]">
               {product.name}
             </h1>
 
@@ -223,18 +222,18 @@ export default async function ProductPage({ params }: PageProps) {
             </p>
 
             {/* Strength */}
-            <p className="mt-1 text-sm font-normal text-[#64748b]">
+            <p className="mt-1 text-sm font-normal text-[#555B66]">
               Strength / Profile: <span className="font-semibold text-[#080878]">{product.strength}</span>
             </p>
 
             {/* Clinical Overview */}
-            <div className="mt-5 rounded border border-[#D9DDE7] bg-[#F5F6FA] p-4 text-xs sm:text-sm leading-relaxed text-[#475569]">
+            <div className="mt-5 rounded-xl border border-[#D9DDE7] bg-[#F5F6FA] p-4 text-xs sm:text-sm leading-relaxed text-[#475569]">
               <p>{product.overview}</p>
             </div>
 
             {/* Statutory Schedule H Warning for Prescription Formulations */}
             {product.prescription === 'Physician guided' ? (
-              <div className="mt-4 rounded border-l-4 border-[#DC2626] bg-[#FEF2F2] p-3.5 text-xs text-[#991B1B]">
+              <div className="mt-4 rounded-xl border-l-4 border-[#DC2626] bg-[#FEF2F2] p-3.5 text-xs text-[#991B1B]">
                 <div className="flex items-center gap-1.5 font-bold uppercase tracking-wider text-[11px] text-[#DC2626]">
                   <AlertCircle className="size-3.5" />
                   <span>Schedule H Prescription Drug — Statutory Notice</span>
@@ -244,7 +243,7 @@ export default async function ProductPage({ params }: PageProps) {
                 </p>
               </div>
             ) : (
-              <div className="mt-4 rounded border-l-4 border-[#080878] bg-[#DDE2FF] p-3.5 text-xs text-[#080878]">
+              <div className="mt-4 rounded-xl border-l-4 border-[#080878] bg-[#DDE2FF] p-3.5 text-xs text-[#080878]">
                 <div className="flex items-center gap-1.5 font-bold uppercase tracking-wider text-[11px] text-[#080878]">
                   <CheckCircle2 className="size-3.5" />
                   <span>Supportive Care &amp; Nutraceutical Formulation</span>
@@ -257,19 +256,19 @@ export default async function ProductPage({ params }: PageProps) {
 
             {/* Key Quick Specifications Grid */}
             <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              <div className="rounded border border-[#D9DDE7] bg-white p-3">
+              <div className="rounded-xl border border-[#D9DDE7] bg-white p-3">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#555B66]">Dosage Form</span>
                 <p className="mt-1 text-xs font-bold text-[#080878]">{product.form}</p>
               </div>
-              <div className="rounded border border-[#D9DDE7] bg-white p-3">
+              <div className="rounded-xl border border-[#D9DDE7] bg-white p-3">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#555B66]">Packaging Pack</span>
                 <p className="mt-1 text-xs font-bold text-[#080878]">{product.pack}</p>
               </div>
-              <div className="rounded border border-[#D9DDE7] bg-white p-3">
+              <div className="rounded-xl border border-[#D9DDE7] bg-white p-3">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#555B66]">M.R.P. (Incl. Taxes)</span>
                 <p className="mt-1 text-xs font-bold text-[#080878]">{product.mrp}</p>
               </div>
-              <div className="rounded border border-[#D9DDE7] bg-white p-3">
+              <div className="rounded-xl border border-[#D9DDE7] bg-white p-3">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-[#555B66]">Drug Class</span>
                 <p className="mt-1 text-xs font-bold text-[#080878]">
                   {product.prescription === 'Physician guided' ? 'Schedule H Rx' : 'OTC Supportive'}
@@ -298,14 +297,14 @@ export default async function ProductPage({ params }: PageProps) {
         </section>
 
         {/* Detailed Clinical Sections */}
-        <section className="py-12">
-          <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
-            {/* Main Clinical Details (8 cols) */}
+        <section className="mt-12">
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
+            {/* Primary Clinical Data (8 cols) */}
             <div className="lg:col-span-8 space-y-10">
-              {/* Section 1: Detailed Composition */}
+              {/* Section 1: Exact Active Composition */}
               <div>
                 <div className="flex items-center gap-2.5 mb-4 border-b border-[#D9DDE7] pb-3">
-                  <div className="flex size-8 items-center justify-center rounded bg-[#DDE2FF] text-[#080878]">
+                  <div className="flex size-8 items-center justify-center rounded-lg bg-[#DDE2FF] text-[#080878]">
                     <Pill className="size-4" />
                   </div>
                   <div>
@@ -314,7 +313,7 @@ export default async function ProductPage({ params }: PageProps) {
                   </div>
                 </div>
 
-                <div className="overflow-hidden rounded border border-[#D9DDE7] bg-white shadow-2xs">
+                <div className="overflow-hidden rounded-xl border border-[#D9DDE7] bg-white shadow-2xs">
                   <table className="w-full text-left text-xs sm:text-sm">
                     <thead className="bg-[#DDE2FF] border-b border-[#CCD5FF] text-[#080878] uppercase text-[10px] font-bold tracking-wider">
                       <tr>
@@ -339,7 +338,7 @@ export default async function ProductPage({ params }: PageProps) {
               {/* Section 2: Clinical Indications */}
               <div>
                 <div className="flex items-center gap-2.5 mb-4 border-b border-[#D9DDE7] pb-3">
-                  <div className="flex size-8 items-center justify-center rounded bg-[#DDE2FF] text-[#080878]">
+                  <div className="flex size-8 items-center justify-center rounded-lg bg-[#DDE2FF] text-[#080878]">
                     <ClipboardList className="size-4" />
                   </div>
                   <div>
@@ -352,7 +351,7 @@ export default async function ProductPage({ params }: PageProps) {
                   {product.indications.map((indication, idx) => (
                     <div
                       key={idx}
-                      className="flex items-start gap-2.5 rounded border border-[#D9DDE7] bg-[#F5F6FA] p-3 text-xs sm:text-sm text-[#202124]"
+                      className="flex items-start gap-2.5 rounded-lg border border-[#D9DDE7] bg-[#F5F6FA] p-3 text-xs sm:text-sm text-[#202124]"
                     >
                       <CheckCircle2 className="size-4 text-[#080878] shrink-0 mt-0.5" />
                       <span>{indication}</span>
@@ -364,7 +363,7 @@ export default async function ProductPage({ params }: PageProps) {
               {/* Section 3: Clinical Benefits */}
               <div>
                 <div className="flex items-center gap-2.5 mb-4 border-b border-[#D9DDE7] pb-3">
-                  <div className="flex size-8 items-center justify-center rounded bg-[#DDE2FF] text-[#080878]">
+                  <div className="flex size-8 items-center justify-center rounded-lg bg-[#DDE2FF] text-[#080878]">
                     <Sparkles className="size-4" />
                   </div>
                   <div>
@@ -377,7 +376,7 @@ export default async function ProductPage({ params }: PageProps) {
                   {product.benefits.map((benefit, idx) => (
                     <div
                       key={idx}
-                      className="flex items-start gap-3 rounded border border-[#D9DDE7] bg-white p-3.5 text-xs sm:text-sm leading-relaxed text-[#202124] shadow-2xs"
+                      className="flex items-start gap-3 rounded-lg border border-[#D9DDE7] bg-white p-3.5 text-xs sm:text-sm leading-relaxed text-[#202124] shadow-2xs"
                     >
                       <span className="flex size-5 shrink-0 items-center justify-center rounded bg-[#DDE2FF] text-[11px] font-bold text-[#080878] mt-0.5">
                         {idx + 1}
@@ -391,7 +390,7 @@ export default async function ProductPage({ params }: PageProps) {
               {/* Section 4: Recommended Dosage */}
               <div>
                 <div className="flex items-center gap-2.5 mb-4 border-b border-[#D9DDE7] pb-3">
-                  <div className="flex size-8 items-center justify-center rounded bg-[#DDE2FF] text-[#080878]">
+                  <div className="flex size-8 items-center justify-center rounded-lg bg-[#DDE2FF] text-[#080878]">
                     <ShieldCheck className="size-4" />
                   </div>
                   <div>
@@ -400,7 +399,7 @@ export default async function ProductPage({ params }: PageProps) {
                   </div>
                 </div>
 
-                <div className="rounded border border-[#D9DDE7] bg-[#F5F6FA] p-4 text-xs sm:text-sm leading-relaxed text-[#202124]">
+                <div className="rounded-xl border border-[#D9DDE7] bg-[#F5F6FA] p-4 text-xs sm:text-sm leading-relaxed text-[#202124]">
                   <p className="font-bold text-[#080878]">Prescribing Guidance:</p>
                   <p className="mt-1 text-[#555B66]">{product.dosage}</p>
                   <div className="mt-3 flex items-center gap-2 text-xs text-[#B91C1C] bg-[#FEF2F2] p-2.5 rounded border border-[#FEE2E2]">
@@ -414,7 +413,7 @@ export default async function ProductPage({ params }: PageProps) {
             {/* Sidebar Specifications & Packaging Info (4 cols) */}
             <div className="lg:col-span-4 space-y-6">
               {/* Packaging & Storage Box */}
-              <div className="rounded border border-[#D9DDE7] bg-white p-5 shadow-2xs">
+              <div className="rounded-xl border border-[#D9DDE7] bg-white p-5 shadow-2xs">
                 <h3 className="text-xs font-bold uppercase tracking-wider text-[#080878] mb-4 border-b border-[#D9DDE7] pb-2">
                   Packaging &amp; Stability
                 </h3>
@@ -445,14 +444,14 @@ export default async function ProductPage({ params }: PageProps) {
               </div>
 
               {/* Physician Inquiry Card */}
-              <div className="rounded border border-[#CCD5FF] bg-[#DDE2FF] p-5">
+              <div className="rounded-xl border border-[#CCD5FF] bg-[#DDE2FF] p-5">
                 <h3 className="text-sm font-bold text-[#080878]">Clinical Inquiry / Sample Request</h3>
                 <p className="mt-1.5 text-xs text-[#555B66] leading-relaxed">
                   Healthcare practitioners and hospital pharmacies may request detailed product dossiers, bio-equivalence data, or clinic samples.
                 </p>
                 <Link
                   href="/contact"
-                  className="mt-4 flex w-full items-center justify-center gap-1.5 rounded bg-[#080878] py-2.5 text-xs font-bold text-white hover:bg-[#000066] uppercase tracking-wider transition-colors"
+                  className="mt-4 flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#080878] py-2.5 text-xs font-bold text-white hover:bg-[#000066] uppercase tracking-wider transition-colors"
                 >
                   <Mail className="size-3.5" />
                   <span>Contact Medical Desk</span>
@@ -460,7 +459,7 @@ export default async function ProductPage({ params }: PageProps) {
               </div>
 
               {/* Regulatory Notice Card */}
-              <div className="rounded border border-[#D9DDE7] bg-white p-4 text-[11px] text-[#555B66] leading-relaxed">
+              <div className="rounded-xl border border-[#D9DDE7] bg-white p-4 text-[11px] text-[#555B66] leading-relaxed">
                 <p className="font-bold text-[#202124] mb-1">Drug Law Compliance</p>
                 Marketed under Drugs and Cosmetics Act, 1940 and Rules thereunder. Distributed exclusively through licensed pharmaceutical wholesalers and pharmacies.
               </div>
@@ -493,7 +492,7 @@ export default async function ProductPage({ params }: PageProps) {
               {relatedProducts.map((rel) => (
                 <article
                   key={rel.slug}
-                  className="group flex flex-col justify-between rounded border border-[#D9DDE7] bg-white p-4 shadow-2xs hover:border-[#080878] hover:shadow-md transition-all"
+                  className="group flex flex-col justify-between rounded-xl border border-[#D9DDE7] bg-white p-4 shadow-2xs hover:border-[#080878] hover:shadow-md transition-all"
                 >
                   <div>
                     <div className="relative aspect-square w-full overflow-hidden bg-white mb-3 p-3 flex items-center justify-center border-b border-[#F5F6FA]">

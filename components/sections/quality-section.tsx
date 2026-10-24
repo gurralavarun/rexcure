@@ -33,7 +33,7 @@ export function QualitySection() {
 
   return (
     <section className="bg-white py-16 lg:py-24 border-b border-[#D9DDE7] font-sans">
-      <div className="mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-12 xl:px-16">
+      <div className="mx-auto w-full max-w-[1560px] px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Left Column: Authoritative Quality Governance */}
           <div className="lg:col-span-7 flex flex-col items-start">
@@ -42,16 +42,16 @@ export function QualitySection() {
               <span>Quality &amp; Regulatory Compliance</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-semibold tracking-tight text-[#080878] leading-[1.2]">
+            <h2 className="text-[clamp(1.75rem,3.2vw,2.375rem)] font-bold tracking-tight text-[#080878] leading-[1.2]">
               Rigorous Quality Governance &amp; Batch Verification.
             </h2>
 
-            <p className="mt-5 text-base sm:text-[17px] text-[#475569] leading-relaxed font-normal">
+            <p className="mt-5 text-[15px] sm:text-[16px] text-[#475569] leading-relaxed font-normal">
               Quality is an immutable operational discipline at RexCure Pharma. Every commercial batch released from our Hyderabad facility conforms strictly to Indian Pharmacopoeia monographs and current Good Practices (cGMP).
             </p>
 
             {/* Authentic Analytical Testing Matrix Table */}
-            <div className="mt-8 w-full rounded border border-[#D9DDE7] bg-white overflow-x-auto shadow-2xs">
+            <div className="mt-8 w-full rounded-xl border border-[#D9DDE7] bg-white overflow-x-auto shadow-2xs">
               <table className="w-full text-left text-xs sm:text-sm min-w-[340px]">
                 <thead className="bg-[#DDE2FF] border-b border-[#CCD5FF] text-[#080878] text-[11px] font-semibold uppercase tracking-wider">
                   <tr>
@@ -91,8 +91,8 @@ export function QualitySection() {
 
           {/* Right Column: High-Res Analytical Laboratory Visual */}
           <div className="lg:col-span-5">
-            <div className="overflow-hidden rounded-md border border-[#D9DDE7] bg-white p-2 shadow-sm">
-              <div className="relative aspect-[4/3] w-full overflow-hidden rounded bg-[#F5F6FA]">
+            <div className="overflow-hidden rounded-xl border border-[#D9DDE7] bg-white p-2 shadow-sm">
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-[#F5F6FA]">
                 <Image
                   src="/images/quality-assurance.jpg"
                   alt="RexCure Pharma HPLC analytical quality assurance testing laboratory"
@@ -102,7 +102,10 @@ export function QualitySection() {
                 />
               </div>
               <div className="px-3 py-2 flex items-center justify-between text-xs text-[#555B66]">
-                <span className="font-bold text-[#080878]">Analytical Assay &amp; HPLC Verification</span>
+                <span className="font-bold text-[#080878] flex items-center gap-1.5">
+                  <span className="size-2 rounded-full bg-[#159A9C]" />
+                  Analytical Assay &amp; HPLC Verification
+                </span>
                 <span>Batch Release Unit</span>
               </div>
             </div>

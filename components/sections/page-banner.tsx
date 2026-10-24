@@ -53,8 +53,8 @@ export function PageBanner({
 
   return (
     <div className={`w-full border-b border-[#D9DDE7] ${className}`}>
-      {/* Abbott-Style Clean Breadcrumb Strip */}
-      <div className={`w-full border-b py-2.5 px-6 sm:px-10 lg:px-12 xl:px-16 transition-colors ${breadcrumbBg}`}>
+      {/* Clean Breadcrumb Strip */}
+      <div className={`w-full border-b py-2.5 px-4 sm:px-8 lg:px-12 xl:px-16 transition-colors ${breadcrumbBg}`}>
         <div className="mx-auto w-full max-w-[1560px]">
           <nav aria-label="Breadcrumb" className="flex items-center flex-wrap gap-1.5 text-xs sm:text-[13px] font-medium tracking-wide">
             {breadcrumbs.map((item, index) => {
@@ -87,8 +87,8 @@ export function PageBanner({
         </div>
       </div>
 
-      {/* Main Abbott-Style Prominent Page Banner */}
-      <div className={`w-full py-10 sm:py-14 lg:py-16 px-6 sm:px-10 lg:px-12 xl:px-16 ${bannerBg}`}>
+      {/* Main Prominent Page Banner */}
+      <div className={`w-full py-10 sm:py-14 lg:py-16 px-4 sm:px-8 lg:px-12 xl:px-16 ${bannerBg}`}>
         <div className="mx-auto w-full max-w-[1560px]">
           <div className="max-w-4xl">
             {eyebrow && (
@@ -99,11 +99,11 @@ export function PageBanner({
             )}
 
             <div className="flex flex-wrap items-baseline gap-4">
-              <h1 className={`text-3xl sm:text-4xl lg:text-[44px] font-bold tracking-tight leading-[1.18] ${titleColor}`}>
+              <h1 className={`text-[clamp(1.875rem,3.5vw,2.75rem)] font-bold tracking-tight leading-[1.18] ${titleColor}`}>
                 {title}
               </h1>
               {badge && (
-                <span className={`rounded px-3 py-1 text-xs font-semibold uppercase tracking-wider ${
+                <span className={`rounded-md px-3 py-1 text-xs font-semibold uppercase tracking-wider ${
                   isCorporateBlue
                     ? 'bg-white/15 text-white border border-white/20'
                     : 'bg-white text-[#080878] border border-[#CCD5FF]'

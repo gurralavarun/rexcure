@@ -28,7 +28,7 @@ export default function TherapeuticAreasPage() {
       <SiteHeader />
 
       <main>
-        {/* Abbott-Style Page Banner */}
+        {/* Page Banner */}
         <PageBanner
           breadcrumbs={[
             { label: 'Home', href: '/' },
@@ -43,7 +43,7 @@ export default function TherapeuticAreasPage() {
 
         {/* Professional Category Directory on White Content Area */}
         <section className="py-14 lg:py-20 bg-white">
-          <div className="mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-12 xl:px-16">
+          <div className="mx-auto w-full max-w-[1560px] px-4 sm:px-8 lg:px-12 xl:px-16">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               {therapeuticAreas.map((area) => {
                 const code = segmentCodes[area.slug] || 'SEG'
@@ -52,20 +52,20 @@ export default function TherapeuticAreasPage() {
                 return (
                   <div
                     key={area.slug}
-                    className="flex flex-col justify-between rounded border border-[#D9DDE7] bg-white p-6 shadow-2xs hover:border-[#080878] hover:shadow-md transition-all duration-200"
+                    className="flex flex-col justify-between rounded-xl border border-[#D9DDE7] bg-white p-6 shadow-xs hover:border-[#080878] hover:shadow-md transition-all duration-200"
                   >
                     <div>
                       {/* Category Header */}
                       <div className="flex items-center justify-between mb-4 border-b border-[#F5F6FA] pb-3">
-                        <span className="rounded bg-[#DDE2FF] border border-[#CCD5FF] px-2.5 py-0.5 text-[10px] font-semibold tracking-wider text-[#080878]">
+                        <span className="rounded-md bg-[#DDE2FF] border border-[#CCD5FF] px-2.5 py-0.5 text-[10px] font-semibold tracking-wider text-[#080878]">
                           {code}
                         </span>
-                        <span className="text-xs font-medium text-[#64748b]">
+                        <span className="text-xs font-medium text-[#555B66]">
                           {areaProducts.length} {areaProducts.length === 1 ? 'Formulation' : 'Formulations'}
                         </span>
                       </div>
 
-                      <h2 className="text-xl font-semibold text-[#080878]">
+                      <h2 className="text-xl font-bold text-[#080878]">
                         <Link href={`/therapeutic-areas/${area.slug}`} className="hover:text-[#304BEA] transition-colors">
                           {area.name}
                         </Link>
@@ -76,8 +76,8 @@ export default function TherapeuticAreasPage() {
                       </p>
 
                       {/* Clinical Focus */}
-                      <div className="mt-4 rounded bg-[#F5F6FA] p-3 text-xs border border-[#D9DDE7]">
-                        <span className="font-semibold text-[#1e293b]">Clinical Focus: </span>
+                      <div className="mt-4 rounded-lg bg-[#F5F6FA] p-3 text-xs border border-[#D9DDE7]">
+                        <span className="font-bold text-[#202124]">Clinical Focus: </span>
                         <span className="text-[#475569]">{area.clinicalFocus}</span>
                       </div>
 
@@ -90,7 +90,7 @@ export default function TherapeuticAreasPage() {
                           {area.keyMolecules.map((mol) => (
                             <span
                               key={mol}
-                              className="rounded bg-white border border-[#D9DDE7] px-2 py-0.5 text-[11px] font-medium text-[#202124]"
+                              className="rounded-md bg-[#F5F6FA] border border-[#D9DDE7] px-2 py-0.5 text-[11px] font-medium text-[#202124]"
                             >
                               {mol}
                             </span>
@@ -108,10 +108,10 @@ export default function TherapeuticAreasPage() {
                             <li key={p.slug}>
                               <Link
                                 href={`/products/${p.slug}`}
-                                className="text-[#080878] hover:text-[#304BEA] font-medium flex items-center justify-between py-0.5"
+                                className="text-[#080878] hover:text-[#304BEA] font-semibold flex items-center justify-between py-0.5"
                               >
                                 <span>• {p.name}</span>
-                                <span className="text-[#555B66] text-[11px]">{p.form}</span>
+                                <span className="text-[#555B66] text-[11px] font-normal">{p.form}</span>
                               </Link>
                             </li>
                           ))}
@@ -119,13 +119,13 @@ export default function TherapeuticAreasPage() {
                       </div>
                     </div>
 
-                    {/* Action Link: EXPLORE PRODUCTS → */}
+                    {/* Action Link: Explore Products */}
                     <div className="mt-6 pt-4 border-t border-[#F5F6FA]">
                       <Link
                         href={`/therapeutic-areas/${area.slug}`}
                         className="inline-flex items-center gap-2 text-xs font-bold text-[#080878] hover:text-[#304BEA] transition-colors uppercase tracking-wider"
                       >
-                        <span>EXPLORE PRODUCTS</span>
+                        <span>Explore Products</span>
                         <ArrowRight className="size-3.5" />
                       </Link>
                     </div>

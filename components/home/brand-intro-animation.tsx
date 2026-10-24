@@ -90,7 +90,7 @@ export function BrandIntroAnimation() {
         className="pointer-events-none absolute inset-0 flex items-center justify-center z-0"
         aria-hidden="true"
       >
-        <div className="w-[420px] h-[340px] rounded-full bg-gradient-to-r from-[#2A4BF2]/20 via-[#CCD5FF]/10 to-transparent blur-3xl" />
+        <div className="w-[420px] h-[340px] rounded-full bg-gradient-to-r from-[#304BEA]/20 via-[#DDE2FF]/10 to-transparent blur-3xl" />
       </div>
 
       {/* Discrete Skip Button */}

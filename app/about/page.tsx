@@ -52,7 +52,7 @@ export default function AboutPage() {
       <SiteHeader />
 
       <main>
-        {/* Abbott-Style Page Banner */}
+        {/* Page Banner */}
         <PageBanner
           breadcrumbs={[
             { label: 'Home', href: '/' },
@@ -60,32 +60,31 @@ export default function AboutPage() {
           ]}
           eyebrow="Corporate Profile & Governance"
           title="ABOUT REXCURE PHARMA"
-          badge="Hyderabad, India"
           description="Headquartered in Hyderabad, Telangana, RexCure Pharmaceuticals is an established Indian healthcare enterprise dedicated to formulating and marketing high-integrity prescription medicines."
           variant="light-blue"
         />
 
         {/* Company Overview & Split Story */}
         <section className="py-16 lg:py-24 border-b border-[#D9DDE7]">
-          <div className="mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-12 xl:px-16">
+          <div className="mx-auto w-full max-w-[1560px] px-4 sm:px-8 lg:px-12 xl:px-16">
             <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
               <div className="lg:col-span-6">
-                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#080878] mb-2.5 flex items-center gap-2">
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#080878] mb-3 flex items-center gap-2">
                   <span className="h-0.5 w-6 bg-[#080878]" />
                   <span>Who We Are</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-semibold text-[#080878] leading-[1.2]">
+                <h2 className="text-[clamp(1.75rem,3.2vw,2.375rem)] font-bold text-[#080878] leading-[1.2]">
                   Dedicated to Reliable Therapeutic Solutions
                 </h2>
-                <p className="mt-5 text-base sm:text-[17px] leading-relaxed text-[#475569] font-normal">
+                <p className="mt-5 text-[15px] sm:text-[16px] leading-relaxed text-[#475569] font-normal">
                   {company.name} was established with a clear mandate: to formulate, market, and distribute pharmaceutical products that meet uncompromising standards of purity, bio-availability, and therapeutic efficacy.
                 </p>
-                <p className="mt-4 text-base leading-relaxed text-[#475569] font-normal">
+                <p className="mt-4 text-[15px] sm:text-[16px] leading-relaxed text-[#475569] font-normal">
                   Operating in Hyderabad — the undisputed pharmaceutical capital of India — we collaborate with experienced formulation scientists, analytical chemists, and quality assurance professionals to deliver medicines that physicians prescribe with full confidence.
                 </p>
 
-                <div className="mt-8 rounded border border-[#D9DDE7] bg-[#F5F6FA] p-5 text-xs text-[#202124]">
-                  <p className="font-semibold text-[#080878] text-sm mb-1">Corporate Headquarters:</p>
+                <div className="mt-8 rounded-xl border border-[#D9DDE7] bg-[#F5F6FA] p-5 text-xs text-[#202124]">
+                  <p className="font-bold text-[#080878] text-sm mb-1">Corporate Headquarters:</p>
                   <p className="text-xs text-[#475569]">{company.address}</p>
                   <p className="text-xs font-semibold text-[#080878] mt-2">
                     Commercial presence across {therapeuticAreas.length} key therapeutic areas nationwide.
@@ -94,8 +93,8 @@ export default function AboutPage() {
               </div>
 
               <div className="lg:col-span-6">
-                <div className="overflow-hidden rounded-md border border-[#D9DDE7] bg-white p-2 shadow-sm">
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded bg-[#F5F6FA]">
+                <div className="overflow-hidden rounded-xl border border-[#D9DDE7] bg-white p-2 shadow-sm">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-[#F5F6FA]">
                     <Image
                       src="/images/quality-assurance.jpg"
                       alt="RexCure Quality Control Analytical Laboratory"
@@ -112,14 +111,14 @@ export default function AboutPage() {
 
         {/* Mission & Vision Section */}
         <section className="bg-[#F5F6FA] py-16 lg:py-24 border-b border-[#D9DDE7]">
-          <div className="mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-12 xl:px-16">
+          <div className="mx-auto w-full max-w-[1560px] px-4 sm:px-8 lg:px-12 xl:px-16">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-              <div className="rounded border border-[#D9DDE7] bg-white p-8 shadow-2xs">
-                <div className="flex size-12 items-center justify-center rounded bg-[#DDE2FF] text-[#080878] mb-5">
+              <div className="rounded-xl border border-[#D9DDE7] bg-white p-8 shadow-xs">
+                <div className="flex size-12 items-center justify-center rounded-lg bg-[#DDE2FF] text-[#080878] mb-5">
                   <Target className="size-6" />
                 </div>
                 <h3 className="text-2xl font-bold text-[#080878]">Our Corporate Mission</h3>
-                <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#555B66]">
+                <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#475569]">
                   To formulate and distribute therapeutics of the highest pharmaceutical standards, providing healthcare practitioners with dependable clinical tools and patients with accessible, high-efficacy medications across chronic and acute therapy areas.
                 </p>
                 <ul className="mt-6 space-y-3 text-xs sm:text-sm text-[#202124]">
@@ -138,12 +137,12 @@ export default function AboutPage() {
                 </ul>
               </div>
 
-              <div className="rounded border border-[#D9DDE7] bg-white p-8 shadow-2xs">
-                <div className="flex size-12 items-center justify-center rounded bg-[#DDE2FF] text-[#080878] mb-5">
+              <div className="rounded-xl border border-[#D9DDE7] bg-white p-8 shadow-xs">
+                <div className="flex size-12 items-center justify-center rounded-lg bg-[#DDE2FF] text-[#080878] mb-5">
                   <Eye className="size-6" />
                 </div>
                 <h3 className="text-2xl font-bold text-[#080878]">Our Corporate Vision</h3>
-                <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#555B66]">
+                <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#475569]">
                   To be acknowledged as one of India's most dependable and ethically grounded pharmaceutical enterprises, recognized for our rigorous quality governance, formulation stability, and long-standing clinician trust.
                 </p>
                 <ul className="mt-6 space-y-3 text-xs sm:text-sm text-[#202124]">
@@ -167,13 +166,13 @@ export default function AboutPage() {
 
         {/* Corporate Values */}
         <section className="py-16 lg:py-24 border-b border-[#D9DDE7] bg-white">
-          <div className="mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-12 xl:px-16">
+          <div className="mx-auto w-full max-w-[1560px] px-4 sm:px-8 lg:px-12 xl:px-16">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#080878] mb-2 flex items-center justify-center gap-2">
                 <span className="h-0.5 w-6 bg-[#080878] inline-block" />
                 <span>Guiding Principles</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-semibold text-[#080878]">
+              <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#080878]">
                 The Values That Define RexCure
               </h2>
               <p className="mt-3 text-base text-[#475569] font-normal">
@@ -183,11 +182,11 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {corporateValues.map((val) => (
-                <div key={val.title} className="rounded border border-[#D9DDE7] bg-white p-6 shadow-2xs hover:border-[#080878] transition-colors">
-                  <div className="flex size-11 items-center justify-center rounded bg-[#DDE2FF] text-[#080878] mb-4">
+                <div key={val.title} className="rounded-xl border border-[#D9DDE7] bg-white p-6 shadow-xs hover:border-[#080878] transition-colors">
+                  <div className="flex size-11 items-center justify-center rounded-lg bg-[#DDE2FF] text-[#080878] mb-4">
                     <val.icon className="size-5" />
                   </div>
-                  <h3 className="text-base font-semibold text-[#080878]">{val.title}</h3>
+                  <h3 className="text-base font-bold text-[#080878]">{val.title}</h3>
                   <p className="mt-2 text-xs sm:text-sm leading-relaxed text-[#475569]">{val.description}</p>
                 </div>
               ))}
@@ -197,8 +196,8 @@ export default function AboutPage() {
 
         {/* Corporate Callout Bar */}
         <section className="bg-[#080878] py-14 text-white">
-          <div className="mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-12 xl:px-16 text-center">
-            <h2 className="text-2xl font-semibold sm:text-3xl text-white">Explore Our Commercial Formulations</h2>
+          <div className="mx-auto w-full max-w-[1560px] px-4 sm:px-8 lg:px-12 xl:px-16 text-center">
+            <h2 className="text-2xl font-bold sm:text-3xl text-white">Explore Our Commercial Formulations</h2>
             <p className="mt-3 text-sm sm:text-base text-white/80 max-w-xl mx-auto">
               Review our complete product catalogue across {therapeuticAreas.length} therapeutic segments or reach out to our distribution desk.
             </p>

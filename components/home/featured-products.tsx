@@ -71,14 +71,14 @@ export function FeaturedProducts() {
     <section className="bg-[#F8F9FC] py-16 lg:py-24 border-b border-[#D9DDE7] font-sans">
       <div className="mx-auto w-full max-w-[1560px] px-6 sm:px-10 lg:px-12 xl:px-16">
         
-        {/* Abbott-Style Section Header */}
+        {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 pb-10 border-b border-[#D9DDE7]">
           <div className="max-w-3xl">
             <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#080878] mb-2.5 flex items-center gap-2">
               <span className="h-0.5 w-6 bg-[#080878]" />
               <span>Flagship Formulations · Clinical Focus</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-semibold tracking-tight text-[#080878] leading-[1.2]">
+            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-bold tracking-tight text-[#080878] leading-[1.2]">
               Featured Pharmaceutical Formulations
             </h2>
             <p className="mt-3.5 text-base sm:text-[17px] text-[#475569] leading-relaxed font-normal">
@@ -133,7 +133,7 @@ export function FeaturedProducts() {
                 </div>
 
                 {/* Product Name */}
-                <h3 className="text-xl font-semibold text-[#080878] group-hover:text-[#2A4BF2] transition-colors leading-snug">
+                <h3 className="text-xl font-bold text-[#080878] group-hover:text-[#2A4BF2] transition-colors leading-snug">
                   {product.name}
                 </h3>
 

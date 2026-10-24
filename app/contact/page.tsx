@@ -25,7 +25,6 @@ export default function ContactPage() {
           ]}
           eyebrow="Corporate Communications & Inquiries"
           title="CONTACT US"
-          badge="Hyderabad Desk"
           description="We welcome inquiries from medical practitioners, pharmaceutical distributors, hospital procurement committees, and institutional partners from our Hyderabad headquarters."
           variant="light-blue"
         />
