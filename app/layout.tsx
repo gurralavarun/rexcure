@@ -32,11 +32,11 @@ const productKeywords = products.flatMap((product) => [
 export const metadata: Metadata = {
   metadataBase: new URL(company.siteUrl),
   title: {
-    default: 'RexCure Pharma | RexCure Pharmaceuticals Pvt. Ltd. | Official Website',
+    default: 'RexCure Pharma | Pharmaceutical Products & Healthcare Solutions',
     template: '%s | RexCure Pharma',
   },
   description:
-    'RexCure Pharma (RexCure Pharmaceuticals Pvt. Ltd.) is a premier pharmaceutical manufacturer in Hyderabad, India. Browse our high-quality prescription formulations, oral solid dosages, antibiotics, diabetology, and wellness products with cGMP compliance.',
+    'RexCure Pharma (RexCure Pharmaceuticals Pvt. Ltd.) is an Indian pharmaceutical company based in Hyderabad, India, providing high-quality prescription formulations, oral solid dosages, antibiotics, and healthcare solutions.',
   applicationName: 'RexCure Pharma',
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,

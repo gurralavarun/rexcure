@@ -4,10 +4,16 @@ import { SiteHeader, SiteFooter } from '@/components/layout'
 import { PageBanner, Contact } from '@/components/sections'
 
 export const metadata: Metadata = {
-  title: 'Contact Us | Corporate Office & Partnerships',
-  description: `Contact ${company.legalName} in Hyderabad, Telangana. Business development, distribution franchise, hospital supply, medical information and pharmacovigilance desks.`,
+  title: 'Contact RexCure Pharma | Institutional Enquiries',
+  description: `Contact RexCure Pharma (RexCure Pharmaceuticals Pvt. Ltd.) in Hyderabad, Telangana. Direct commercial desk for hospital tenders, PCD distribution partnerships, and institutional supply enquiries.`,
   alternates: {
-    canonical: '/contact',
+    canonical: 'https://www.rexcurepharma.com/contact',
+  },
+  openGraph: {
+    title: 'Contact RexCure Pharma | Institutional Enquiries',
+    description: `Contact RexCure Pharma in Hyderabad, Telangana for commercial and institutional supply.`,
+    url: 'https://www.rexcurepharma.com/contact',
+    siteName: 'RexCure Pharma',
   },
 }
 

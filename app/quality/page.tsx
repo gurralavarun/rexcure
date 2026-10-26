@@ -10,10 +10,16 @@ import { SiteHeader, SiteFooter } from '@/components/layout'
 import { PageBanner } from '@/components/sections'
 
 export const metadata: Metadata = {
-  title: 'Quality Assurance & Regulatory Compliance',
-  description: `Explore RexCure's uncompromising quality assurance framework: cGMP quality standards, analytical HPLC assay testing, dissolution profiling, and batch traceability.`,
+  title: 'Quality Assurance & Quality Standards | RexCure Pharma',
+  description: `Explore RexCure Pharma's quality assurance framework: cGMP compliance, analytical IPQC, HPLC assay testing, dissolution profiling, and batch traceability from Hyderabad.`,
   alternates: {
-    canonical: '/quality',
+    canonical: 'https://www.rexcurepharma.com/quality',
+  },
+  openGraph: {
+    title: 'Quality Assurance & Quality Standards | RexCure Pharma',
+    description: `Explore RexCure Pharma's quality assurance framework and compliance standards.`,
+    url: 'https://www.rexcurepharma.com/quality',
+    siteName: 'RexCure Pharma',
   },
 }
 

@@ -6,10 +6,16 @@ import { SiteHeader, SiteFooter } from '@/components/layout'
 import { PageBanner } from '@/components/sections'
 
 export const metadata: Metadata = {
-  title: 'Therapeutic Areas | Clinical Disciplines',
-  description: `Explore RexCure's therapeutic specialties: Diabetology, Gastroenterology, Allergy Care, Musculoskeletal Pain Management, Anti-Infectives, and Nutraceuticals.`,
+  title: 'Therapeutic Areas | RexCure Pharma',
+  description: `Explore RexCure Pharma's clinical therapeutic segments: Anti-Infectives, Diabetology, Gastroenterology, Allergy & Pediatric Care, Pain Management, and Nutraceuticals.`,
   alternates: {
-    canonical: '/therapeutic-areas',
+    canonical: 'https://www.rexcurepharma.com/therapeutic-areas',
+  },
+  openGraph: {
+    title: 'Therapeutic Areas | RexCure Pharma',
+    description: `Explore RexCure Pharma's clinical therapeutic segments and healthcare solutions.`,
+    url: 'https://www.rexcurepharma.com/therapeutic-areas',
+    siteName: 'RexCure Pharma',
   },
 }
 

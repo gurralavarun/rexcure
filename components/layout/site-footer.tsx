@@ -136,10 +136,10 @@ export function SiteFooter() {
           {/* Copyright & Trademark Notice (Refined Typography: 13-14px copyright, readable disclaimer) */}
           <div className="mt-14 pt-8 border-t border-white/15 text-xs sm:text-[13px] text-white/70 leading-relaxed space-y-2.5">
             <p className="font-semibold text-white/90 text-xs sm:text-[13px]">
-              &copy; {currentYear} {company.shortName || 'RexCure'} Pharma. All Rights Reserved. Please read the Legal Notice for further details.
+              &copy; {currentYear} {company.name}. All Rights Reserved. Please read the Legal Notice for further details.
             </p>
             <p className="max-w-4xl text-[12px] sm:text-[13px] leading-relaxed text-white/60 font-normal">
-              Unless otherwise specified, all product and service names appearing in this Internet site are trademarks owned by or licensed to {company.shortName || 'RexCure'} Pharma, its subsidiaries or affiliates. No use of any {company.shortName || 'RexCure'} Pharma trademark, trade name, or trade dress in this site may be made without the prior written authorization of {company.shortName || 'RexCure'} Pharma, except to identify the product or services of the company.
+              Unless otherwise specified, all product and service names appearing in this Internet site are trademarks owned by or licensed to {company.name}, its subsidiaries or affiliates. No use of any {company.name} trademark, trade name, or trade dress in this site may be made without the prior written authorization of {company.name}, except to identify the product or services of the company.
             </p>
           </div>
 

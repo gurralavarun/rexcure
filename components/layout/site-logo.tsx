@@ -39,14 +39,14 @@ export function SiteLogo({
       href="/"
       onClick={handleClick}
       className={`group inline-flex items-center gap-3 focus-visible:outline-none select-none transition-transform active:scale-[0.98] cursor-pointer ${className}`}
-      aria-label="RexCure Home"
+      aria-label="RexCure Pharma - Official Homepage"
     >
       {/* Official RexCure Monogram Emblem from mainlogo */}
       <div className="shrink-0 flex items-center justify-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={logoSrc}
-          alt="RexCure Emblem"
+          alt="RexCure Pharma Official Logo"
           className="h-8 sm:h-9 w-auto max-w-[44px] object-contain transition-transform duration-200 group-hover:scale-105"
         />
       </div>

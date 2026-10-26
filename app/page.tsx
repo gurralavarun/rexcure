@@ -9,46 +9,35 @@ import {
 import { company, products } from '@/data/products'
 
 export const metadata: Metadata = {
-  title: 'RexCure Pharma | RexCure Pharmaceuticals Pvt. Ltd. | Official Website',
+  title: 'RexCure Pharma | Pharmaceutical Products & Healthcare Solutions',
   description:
-    'RexCure Pharma (RexCure Pharmaceuticals Pvt. Ltd.) is a premier pharmaceutical manufacturer in Hyderabad, Telangana. Discover prescription formulations including Rexclav 625, Lycorex Gold, Rexofast Plus, oral solid dosages, and cGMP medicines.',
+    'RexCure Pharma (RexCure Pharmaceuticals Pvt. Ltd.) is an Indian pharmaceutical company based in Hyderabad, Telangana, delivering reliable prescription formulations, oral solid dosages, anti-infectives, and supportive healthcare products.',
   keywords: [
-    'rexcure',
-    'Rexcure',
-    'REXCURE',
-    'rexcure pharma',
+    'RexCure',
     'RexCure Pharma',
-    'rexcure pharmaceuticals',
     'RexCure Pharmaceuticals',
-    'RexCure Pharmaceuticals Pvt Ltd',
-    'rexcurepharma.com',
-    'www.rexcurepharma.com',
+    'RexCure Pharma official website',
     'RexCure Hyderabad',
-    'RexCure medicines',
-    'RexCure products',
+    'Pharmaceutical Products India',
     'Rexclav 625',
     'Lycorex Gold',
     'Rexofast Plus',
-    'RexCure contact',
-    'pharmaceutical company Hyderabad',
-    'cGMP pharma formulations India',
-    'PCD pharma franchise Hyderabad',
     ...products.map((p) => p.name),
   ],
   alternates: {
-    canonical: company.siteUrl,
+    canonical: 'https://www.rexcurepharma.com',
   },
   openGraph: {
-    title: 'RexCure Pharma | RexCure Pharmaceuticals Pvt. Ltd.',
+    title: 'RexCure Pharma | Pharmaceutical Products & Healthcare Solutions',
     description:
-      'Official website of RexCure Pharma (RexCure Pharmaceuticals Pvt. Ltd.), Hyderabad. Explore high-standard prescription formulations, therapeutic areas, and quality compliance.',
-    url: company.siteUrl,
+      'RexCure Pharma (RexCure Pharmaceuticals Pvt. Ltd.) is an Indian pharmaceutical company based in Hyderabad, delivering reliable prescription formulations and healthcare solutions.',
+    url: 'https://www.rexcurepharma.com',
     siteName: 'RexCure Pharma',
     type: 'website',
     locale: 'en_IN',
     images: [
       {
-        url: `${company.siteUrl}/images/hero-lab.jpg`,
+        url: 'https://www.rexcurepharma.com/images/hero-lab.jpg',
         width: 1200,
         height: 675,
         alt: 'RexCure Pharma Corporate Headquarters and Formulations Suite',
@@ -61,20 +50,15 @@ export default function HomePage() {
   const organizationJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'MedicalOrganization',
-    '@id': `${company.siteUrl}/#organization`,
+    '@id': 'https://www.rexcurepharma.com/#organization',
     name: 'RexCure Pharma',
     legalName: 'RexCure Pharmaceuticals Pvt. Ltd.',
     alternateName: [
       'RexCure',
       'Rexcure',
-      'REXCURE',
-      'RexCure Pharma',
-      'rexcure pharma',
       'RexCure Pharmaceuticals',
-      'RexCure Pharmaceuticals Private Limited',
-      'RexCure Hyderabad',
     ],
-    url: company.siteUrl,
+    url: 'https://www.rexcurepharma.com',
     email: company.email,
     telephone: `+91-${company.phone}`,
     address: {
@@ -85,32 +69,25 @@ export default function HomePage() {
       postalCode: '500047',
       addressCountry: 'IN',
     },
-    logo: `${company.siteUrl}/icon.png`,
-    image: `${company.siteUrl}/images/hero-lab.jpg`,
+    logo: 'https://www.rexcurepharma.com/icon.png',
+    image: 'https://www.rexcurepharma.com/images/hero-lab.jpg',
     description:
-      'RexCure Pharma (RexCure Pharmaceuticals Pvt. Ltd.) is an Indian pharmaceutical manufacturer and distributor based in Hyderabad, delivering high-integrity formulations across Diabetology, Gastroenterology, Allergy Care, Anti-Infectives, and Nutraceuticals.',
-    sameAs: [
-      'https://www.rexcurepharma.com',
-      'https://facebook.com',
-      'https://twitter.com',
-      'https://linkedin.com',
-      'https://instagram.com',
-    ],
+      'RexCure Pharma (RexCure Pharmaceuticals Pvt. Ltd.) is an Indian pharmaceutical enterprise based in Hyderabad, delivering high-integrity formulations across Diabetology, Gastroenterology, Allergy Care, Anti-Infectives, and Nutraceuticals.',
   }
 
   const websiteJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': `${company.siteUrl}/#website`,
+    '@id': 'https://www.rexcurepharma.com/#website',
     name: 'RexCure Pharma',
-    alternateName: ['RexCure', 'Rexcure', 'RexCure Pharmaceuticals'],
-    url: company.siteUrl,
+    alternateName: ['RexCure', 'RexCure Pharmaceuticals'],
+    url: 'https://www.rexcurepharma.com',
     publisher: {
-      '@id': `${company.siteUrl}/#organization`,
+      '@id': 'https://www.rexcurepharma.com/#organization',
     },
     potentialAction: {
       '@type': 'SearchAction',
-      target: `${company.siteUrl}/products?q={search_term_string}`,
+      target: 'https://www.rexcurepharma.com/products?q={search_term_string}',
       'query-input': 'required name=search_term_string',
     },
   }

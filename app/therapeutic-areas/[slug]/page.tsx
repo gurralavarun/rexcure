@@ -31,19 +31,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
   }
 
-  const title = `${area.name} Formulations & Therapies`
-  const description = `Discover RexCure's ${area.name} formulations. Clinical focus: ${area.clinicalFocus}. Evidence-backed molecules: ${area.keyMolecules.join(', ')}.`
+  const title = `${area.name} Formulations | RexCure Pharma`
+  const description = `Discover RexCure Pharma's verified formulations in ${area.name}. Clinical focus on ${area.clinicalFocus} and key molecules: ${area.keyMolecules.join(', ')}.`
 
   return {
     title,
     description,
     alternates: {
-      canonical: `/therapeutic-areas/${area.slug}`,
+      canonical: `https://www.rexcurepharma.com/therapeutic-areas/${area.slug}`,
     },
     openGraph: {
       title,
       description,
-      url: `${company.siteUrl}/therapeutic-areas/${area.slug}`,
+      url: `https://www.rexcurepharma.com/therapeutic-areas/${area.slug}`,
+      siteName: 'RexCure Pharma',
     },
   }
 }

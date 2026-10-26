@@ -46,9 +46,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
   }
 
-  // Highly-optimized title targeted at clinical, patient & pharmacy search queries
-  const title = `${product.name} (${product.genericName}) - Uses, Dosage, Price & Composition | RexCure Pharma`
-  const description = `${product.name} (${product.genericName}): ${product.form}, ${product.strength}. Prescribed for ${product.indications.slice(0, 3).join(', ')}. Manufactured under strict cGMP by ${company.name}, Hyderabad. View composition, packaging and commercial inquiry.`
+  const title = `${product.name} (${product.genericName}) | RexCure Pharma`
+  const description = `${product.name} (${product.genericName}): ${product.form}, strength ${product.strength}. Prescribed for ${product.indications.slice(0, 3).join(', ')}. Official formulation profile by RexCure Pharma, Hyderabad.`
 
   const primaryImageUrl = (product.primaryImage || product.images[0]).startsWith('http')
     ? (product.primaryImage || product.images[0])
@@ -63,45 +62,31 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description,
     keywords: [
       product.name,
-      product.name.toLowerCase(),
-      product.name.replace(/[^a-zA-Z0-9]/g, ''),
       product.genericName,
-      `${product.name} uses`,
-      `${product.name} dosage`,
-      `${product.name} composition`,
-      `${product.name} price`,
-      `${product.name} MRP`,
-      `${product.name} side effects`,
-      `${product.name} packaging`,
       `${product.name} ${product.form}`,
-      `buy ${product.name}`,
-      `order ${product.name}`,
-      `${product.name} tablet`,
-      `${product.name} syrup`,
-      `${product.name} manufacturer India`,
-      `${product.name} PCD franchise`,
-      `${product.genericName} tablets IP`,
-      `${product.genericName} price in India`,
+      `${product.name} composition`,
+      `${product.name} packaging`,
+      'RexCure Pharma',
+      'RexCure',
+      'RexCure pharmaceuticals',
       product.category,
       product.therapeuticArea,
-      'RexCure Pharma Hyderabad',
       ...product.composition,
-      ...product.indications,
     ],
     alternates: {
-      canonical: `/products/${product.slug}`,
+      canonical: `https://www.rexcurepharma.com/products/${product.slug}`,
     },
     openGraph: {
       title,
       description,
-      url: `${company.siteUrl}/products/${product.slug}`,
-      siteName: company.name,
+      url: `https://www.rexcurepharma.com/products/${product.slug}`,
+      siteName: 'RexCure Pharma',
       type: 'article',
       images: allImageUrls.map((imgUrl, idx) => ({
         url: imgUrl,
-        width: 1000,
-        height: 1000,
-        alt: `${product.name} (${product.genericName}) - Official pharmaceutical packaging view ${idx + 1} by ${company.name}`,
+        width: 800,
+        height: 800,
+        alt: `${product.name} (${product.genericName}) packaging box - RexCure Pharma view ${idx + 1}`,
       })),
     },
     twitter: {
@@ -144,16 +129,14 @@ export default async function ProductPage({ params }: PageProps) {
     img.startsWith('http') ? img : `${company.siteUrl}${img}`
   )
 
-  const numericPrice = parseFloat(product.mrp.replace(/[^0-9.]/g, '')) || 100.0
-
-  // Google Product & Drug Unified Schema.org Rich Result Graph
+  // Strictly verified schema.org structure without invented offers, ratings, or unverified claims
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
-      // 1. Google Product Rich Result (enables product badge in Google Images & price/stock in Web search)
+      // 1. Schema.org Product (verified technical specifications only)
       {
         '@type': 'Product',
-        '@id': `${company.siteUrl}/products/${product.slug}#product`,
+        '@id': `https://www.rexcurepharma.com/products/${product.slug}#product`,
         name: product.name,
         alternateName: product.genericName,
         description: product.overview || product.shortDescription,
@@ -162,32 +145,19 @@ export default async function ProductPage({ params }: PageProps) {
         mpn: product.slug.toUpperCase(),
         brand: {
           '@type': 'Brand',
-          name: company.name,
+          name: 'RexCure Pharma',
         },
         manufacturer: {
           '@type': 'Organization',
           name: company.legalName,
-          url: company.siteUrl,
+          url: 'https://www.rexcurepharma.com',
         },
         category: product.therapeuticArea,
-        offers: {
-          '@type': 'Offer',
-          url: `${company.siteUrl}/products/${product.slug}`,
-          priceCurrency: 'INR',
-          price: numericPrice,
-          priceValidUntil: '2027-12-31',
-          itemCondition: 'https://schema.org/NewCondition',
-          availability: 'https://schema.org/InStock',
-          seller: {
-            '@type': 'Organization',
-            name: company.name,
-          },
-        },
       },
-      // 2. Schema.org Medical Drug Structure (Clinical Authority & Medical Knowledge Graph)
+      // 2. Schema.org Drug Structure (verified composition, dosage form, active ingredients)
       {
         '@type': 'Drug',
-        '@id': `${company.siteUrl}/products/${product.slug}#drug`,
+        '@id': `https://www.rexcurepharma.com/products/${product.slug}#drug`,
         name: product.name,
         nonProprietaryName: product.genericName,
         description: product.shortDescription,
@@ -208,16 +178,16 @@ export default async function ProductPage({ params }: PageProps) {
         brand: {
           '@type': 'Organization',
           name: company.legalName,
-          url: company.siteUrl,
+          url: 'https://www.rexcurepharma.com',
         },
         manufacturer: {
           '@type': 'Organization',
           name: company.legalName,
         },
-        url: `${company.siteUrl}/products/${product.slug}`,
+        url: `https://www.rexcurepharma.com/products/${product.slug}`,
         image: primaryImageUrl,
       },
-      // 3. Google Search Breadcrumb Navigation
+      // 3. Search Breadcrumb Navigation
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
@@ -225,29 +195,29 @@ export default async function ProductPage({ params }: PageProps) {
             '@type': 'ListItem',
             position: 1,
             name: 'Home',
-            item: company.siteUrl,
+            item: 'https://www.rexcurepharma.com',
           },
           {
             '@type': 'ListItem',
             position: 2,
             name: 'Products',
-            item: `${company.siteUrl}/products`,
+            item: 'https://www.rexcurepharma.com/products',
           },
           {
             '@type': 'ListItem',
             position: 3,
             name: product.therapeuticArea,
-            item: `${company.siteUrl}/therapeutic-areas/${product.therapeuticSlug}`,
+            item: `https://www.rexcurepharma.com/therapeutic-areas/${product.therapeuticSlug}`,
           },
           {
             '@type': 'ListItem',
             position: 4,
             name: product.name,
-            item: `${company.siteUrl}/products/${product.slug}`,
+            item: `https://www.rexcurepharma.com/products/${product.slug}`,
           },
         ],
       },
-      // 4. Google Image Search ImageObject
+      // 4. ImageObject metadata
       {
         '@type': 'ImageObject',
         '@id': `${primaryImageUrl}#image`,

@@ -16,10 +16,16 @@ import { SiteHeader, SiteFooter } from '@/components/layout'
 import { PageBanner } from '@/components/sections'
 
 export const metadata: Metadata = {
-  title: 'About Us | Corporate Profile & Heritage',
-  description: `Discover ${company.legalName}: an Indian pharmaceutical enterprise headquartered in Hyderabad, Telangana. Learn about our mission, vision, corporate values, and therapeutic focus.`,
+  title: 'About RexCure Pharma | Company Overview',
+  description: `Discover RexCure Pharma (RexCure Pharmaceuticals Pvt. Ltd.): an Indian pharmaceutical enterprise headquartered in Hyderabad, Telangana. Learn about our corporate mission, values, and quality-driven healthcare solutions.`,
   alternates: {
-    canonical: '/about',
+    canonical: 'https://www.rexcurepharma.com/about',
+  },
+  openGraph: {
+    title: 'About RexCure Pharma | Company Overview',
+    description: `Discover RexCure Pharma (RexCure Pharmaceuticals Pvt. Ltd.): an Indian pharmaceutical enterprise headquartered in Hyderabad, Telangana.`,
+    url: 'https://www.rexcurepharma.com/about',
+    siteName: 'RexCure Pharma',
   },
 }
 

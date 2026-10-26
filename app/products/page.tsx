@@ -5,33 +5,30 @@ import { PageBanner } from '@/components/sections'
 import { ProductCatalogue } from '@/components/products/product-catalogue'
 
 export const metadata: Metadata = {
-  title: 'Pharmaceutical Formulations Portfolio | All Products',
-  description: `Browse the complete pharmaceutical formulations catalogue of ${company.name}, Hyderabad. Explore all ${products.length} medicines, active ingredients, dosage forms, strengths, and therapeutic categories manufactured under cGMP compliance.`,
+  title: 'Pharmaceutical Products | RexCure Pharma',
+  description: `Browse the verified pharmaceutical products catalogue of RexCure Pharma, Hyderabad. Explore our 15 commercial formulations across anti-infectives, gastro care, diabetology, and wellness.`,
   keywords: [
     'RexCure Pharma products',
-    'RexCure medicines list',
-    'pharmaceutical formulations catalogue',
-    'prescription medicines Hyderabad',
-    'PCD pharma product list',
-    'antibiotics India',
-    'gastroenterology medicines',
-    'diabetology formulations',
-    'nutraceutical softgels India',
+    'RexCure pharmaceutical products',
+    'RexCure medicines',
+    'Rexclav 625',
+    'Lycorex Gold',
+    'Rexofast Plus',
     ...products.map((p) => p.name),
   ],
   alternates: {
-    canonical: '/products',
+    canonical: 'https://www.rexcurepharma.com/products',
   },
   openGraph: {
-    title: `Pharmaceutical Formulations Portfolio | ${company.name}`,
-    description: `Browse all ${products.length} pharmaceutical formulations by ${company.name}.`,
-    url: `${company.siteUrl}/products`,
+    title: 'Pharmaceutical Products | RexCure Pharma',
+    description: `Browse all 15 verified pharmaceutical formulations by RexCure Pharma.`,
+    url: 'https://www.rexcurepharma.com/products',
     images: [
       {
-        url: `${company.siteUrl}/images/hero-lab.jpg`,
+        url: 'https://www.rexcurepharma.com/images/hero-lab.jpg',
         width: 1200,
         height: 675,
-        alt: `${company.name} Pharmaceutical Catalogue`,
+        alt: 'RexCure Pharma Pharmaceutical Products Catalogue',
       },
     ],
   },

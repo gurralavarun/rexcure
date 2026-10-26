@@ -17,7 +17,7 @@ export interface CompanyInfo {
 export const company: CompanyInfo = {
   name: 'RexCure Pharma',
   legalName: 'RexCure Pharmaceuticals Pvt. Ltd.',
-  shortName: 'RexCure Pharma',
+  shortName: 'RexCure',
   siteUrl: 'https://www.rexcurepharma.com',
   email: 'info@rexcurepharma.com',
   phone: '9885152643',
