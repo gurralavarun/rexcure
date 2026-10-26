@@ -128,6 +128,10 @@ export function Hero() {
       aria-label="Therapeutic Areas and Formulations Carousel"
       className="relative w-full bg-white border-b border-[#D9DDE7]"
     >
+      {/* Canonical Primary H1 for Google Search Entity Recognition */}
+      <h1 className="sr-only">
+        RexCure Pharma | RexCure Pharmaceuticals Pvt. Ltd. - Precision Pharmaceutical Formulations &amp; Healthcare Solutions
+      </h1>
       {/* ========================================================= */}
       {/* 1. FULL-WIDTH CIRCULAR HERO SLIDESHOW (2.5:1 DESKTOP)     */}
       {/* ========================================================= */}
@@ -196,13 +200,13 @@ export function Hero() {
                     {/* Category Eyebrow Pill */}
                     <div className="inline-flex items-center gap-1.5 sm:gap-2 rounded border border-[#CCD5FF] bg-[#DDE2FF] px-2.5 py-1 sm:px-3 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.14em] text-[#080878] mb-2.5 sm:mb-3.5 shadow-2xs">
                       <span className="size-1.5 sm:size-2 rounded-full bg-[#080878]" />
-                      <span>{slide.category}</span>
+                      <span>RexCure · {slide.category}</span>
                     </div>
 
                     {/* Slide Heading - Responsively scaled (46-58px on desktop) */}
-                    <h1 className="text-[clamp(1.75rem,3.8vw,3.125rem)] font-bold tracking-tight text-[#080878] leading-[1.18]">
+                    <h2 className="text-[clamp(1.75rem,3.8vw,3.125rem)] font-bold tracking-tight text-[#080878] leading-[1.18]">
                       {slide.heading}
-                    </h1>
+                    </h2>
 
                     {/* Slide Description */}
                     <p className="mt-2.5 sm:mt-3.5 lg:mt-4 text-[15px] sm:text-[16px] lg:text-[17px] text-[#475569] font-normal leading-[1.65] max-w-xl">
