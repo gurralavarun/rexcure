@@ -329,7 +329,7 @@ export function Hero() {
                 Operational Facility
               </p>
               <p className="text-[11px] sm:text-xs text-[#64748b] mt-0.5">
-                DNO 18-500/2, Malkangiri, Secunderabad
+                DNO 18-500/2, Malkajgiri, Secunderabad
               </p>
             </div>
 

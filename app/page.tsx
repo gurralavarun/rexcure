@@ -63,7 +63,7 @@ export default function HomePage() {
     telephone: `+91-${company.phone}`,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'DNO 18-500/2, Malkangiri, Secunderabad',
+      streetAddress: 'DNO 18-500/2, Malkajgiri, Secunderabad',
       addressLocality: 'Hyderabad',
       addressRegion: 'Telangana',
       postalCode: '500047',

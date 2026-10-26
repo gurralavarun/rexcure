@@ -22,7 +22,7 @@ export const company: CompanyInfo = {
   email: 'info@rexcurepharma.com',
   phone: '9885152643',
   phoneDisplay: '+91 98851 52643',
-  address: 'DNO 18-500/2, Malkangiri, Secunderabad, Hyderabad, Telangana',
+  address: 'DNO 18-500/2, Malkajgiri, Secunderabad, Hyderabad, Telangana',
   city: 'Hyderabad',
   state: 'Telangana',
   country: 'India',
