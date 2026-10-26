@@ -23,17 +23,20 @@ const productKeywords = products.flatMap((product) => [
   `${product.name} ${product.form}`,
   `${product.name} composition`,
   `${product.name} indications`,
+  `${product.name} price`,
+  `${product.name} uses`,
+  `RexCure ${product.name}`,
   ...product.composition,
 ])
 
 export const metadata: Metadata = {
   metadataBase: new URL(company.siteUrl),
   title: {
-    default: `${company.name} | Professional Pharmaceutical Formulations & Healthcare Solutions`,
+    default: `${company.name} | Pharmaceutical Formulations, Medicines & Healthcare Solutions India`,
     template: `%s | ${company.name}`,
   },
   description:
-    'RexCure Pharma is a leading Indian pharmaceutical company delivering high-standard formulations across Diabetology, Gastroenterology, Allergy Care, Pain Management, Anti-Infectives and Nutraceuticals from Hyderabad, India.',
+    'RexCure Pharma is a premier pharmaceutical manufacturer in Hyderabad, India. Browse our high-quality prescription formulations, oral solid dosages, antibiotics, diabetology, and wellness products with cGMP compliance.',
   applicationName: company.name,
   keywords: [
     company.name,
@@ -48,6 +51,8 @@ export const metadata: Metadata = {
     'Allergy Pediatric Suspensions',
     'Musculoskeletal Analgesics',
     'Nutraceutical Antioxidant Softgels',
+    'PCD Pharma Franchise India',
+    'Hospital Supply Pharmaceuticals',
     ...productKeywords,
   ],
   authors: [{ name: company.name, url: company.siteUrl }],
@@ -77,7 +82,7 @@ export const metadata: Metadata = {
       'Explore RexCure Pharma therapeutic portfolio, quality standards and clinical product profiles.',
     images: [
       {
-        url: '/images/hero-lab.jpg',
+        url: `${company.siteUrl}/images/hero-lab.jpg`,
         width: 1200,
         height: 675,
         alt: `${company.name} State-of-the-art Formulation Laboratory`,
@@ -89,7 +94,7 @@ export const metadata: Metadata = {
     title: `${company.name} | Pharmaceutical Formulations & Healthcare Excellence`,
     description:
       'Explore RexCure Pharma therapeutic portfolio, quality standards and clinical product profiles.',
-    images: ['/images/hero-lab.jpg'],
+    images: [`${company.siteUrl}/images/hero-lab.jpg`],
   },
   icons: {
     icon: [
@@ -123,8 +128,67 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const rootJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': ['Organization', 'MedicalBusiness'],
+        '@id': `${company.siteUrl}/#organization`,
+        name: company.name,
+        legalName: company.legalName,
+        url: company.siteUrl,
+        logo: {
+          '@type': 'ImageObject',
+          url: `${company.siteUrl}/icon.png`,
+          width: 512,
+          height: 512,
+        },
+        image: `${company.siteUrl}/images/hero-lab.jpg`,
+        email: company.email,
+        telephone: `+91-${company.phone}`,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: company.address,
+          addressLocality: company.city,
+          addressRegion: company.state,
+          addressCountry: 'IN',
+        },
+        contactPoint: {
+          '@type': 'ContactPoint',
+          telephone: `+91-${company.phone}`,
+          contactType: 'customer service',
+          email: company.email,
+          areaServed: 'IN',
+          availableLanguage: ['English', 'Hindi', 'Telugu'],
+        },
+      },
+      {
+        '@type': 'WebSite',
+        '@id': `${company.siteUrl}/#website`,
+        url: company.siteUrl,
+        name: company.name,
+        description: 'Pharmaceutical Formulations & Healthcare Solutions',
+        publisher: { '@id': `${company.siteUrl}/#organization` },
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: `${company.siteUrl}/products?q={search_term_string}`,
+          },
+          'query-input': 'required name=search_term_string',
+        },
+      },
+    ],
+  }
+
   return (
     <html lang="en" className={inter.variable}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(rootJsonLd) }}
+        />
+      </head>
       <body className="font-sans antialiased text-[#202124] bg-white selection:bg-[#080878] selection:text-white">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}

@@ -9,11 +9,15 @@ export type ProductGalleryProps = {
   images: string[]
   category: string
   prescription: string
+  genericName?: string
 }
 
-export function ProductGallery({ name, images, category, prescription }: ProductGalleryProps) {
+export function ProductGallery({ name, images, category, prescription, genericName }: ProductGalleryProps) {
   const [activeIndex, setActiveIndex] = useState(0)
   const currentImage = images[activeIndex] || images[0]
+
+  const mainAltText = `${name} (${genericName || ''}) - ${category} formulation packaging box | RexCure Pharma`
+  const mainTitleText = `${name} ${genericName ? `- ${genericName}` : ''} | RexCure Pharma Hyderabad`
 
   return (
     <div className="flex flex-col gap-4 font-sans">
@@ -22,7 +26,8 @@ export function ProductGallery({ name, images, category, prescription }: Product
         <Image
           key={currentImage}
           src={currentImage}
-          alt={`${name} pharmaceutical packaging display`}
+          alt={mainAltText}
+          title={mainTitleText}
           width={800}
           height={800}
           priority
@@ -66,11 +71,12 @@ export function ProductGallery({ name, images, category, prescription }: Product
                   ? 'border-[#080878] ring-2 ring-[#080878]/25 shadow-sm'
                   : 'border-[#D9DDE7] hover:border-[#080878] opacity-80 hover:opacity-100'
               }`}
-              aria-label={`View ${name} packaging view ${idx + 1}`}
+              aria-label={`View ${name} packaging angle ${idx + 1}`}
             >
               <Image
                 src={img}
-                alt={`${name} thumbnail ${idx + 1}`}
+                alt={`${name} (${genericName || ''}) packaging view ${idx + 1}`}
+                title={`${name} angle ${idx + 1}`}
                 width={120}
                 height={120}
                 className="h-full w-full object-contain"

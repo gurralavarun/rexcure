@@ -322,7 +322,8 @@ function ProductDirectoryCard({ product }: { product: Product }) {
         <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#F5F6FA] border-b border-[#D9DDE7] p-5 flex items-center justify-center">
           <Image
             src={displayImage}
-            alt={`${product.name} packaging`}
+            alt={`${product.name} (${product.genericName}) - ${product.category} ${product.form} by RexCure Pharma`}
+            title={`${product.name} (${product.genericName})`}
             width={450}
             height={450}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

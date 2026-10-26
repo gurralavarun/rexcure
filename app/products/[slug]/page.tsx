@@ -42,25 +42,49 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!product) {
     return {
-      title: 'Pharmaceutical Formulation Not Found | RexCure',
+      title: 'Pharmaceutical Formulation Not Found | RexCure Pharma',
     }
   }
 
-  const title = `${product.name} (${product.genericName}) | ${product.therapeuticArea}`
-  const description = `Learn about ${product.name} (${product.genericName}), its dosage form (${product.form}), strength (${product.strength}), composition, clinical indications, and prescribing details from ${company.name}, Hyderabad.`
+  // Highly-optimized title targeted at clinical, patient & pharmacy search queries
+  const title = `${product.name} (${product.genericName}) - Uses, Dosage, Price & Composition | RexCure Pharma`
+  const description = `${product.name} (${product.genericName}): ${product.form}, ${product.strength}. Prescribed for ${product.indications.slice(0, 3).join(', ')}. Manufactured under strict cGMP by ${company.name}, Hyderabad. View composition, packaging and commercial inquiry.`
+
+  const primaryImageUrl = (product.primaryImage || product.images[0]).startsWith('http')
+    ? (product.primaryImage || product.images[0])
+    : `${company.siteUrl}${product.primaryImage || product.images[0]}`
+
+  const allImageUrls = product.images.map((img) =>
+    img.startsWith('http') ? img : `${company.siteUrl}${img}`
+  )
 
   return {
     title,
     description,
     keywords: [
       product.name,
+      product.name.toLowerCase(),
+      product.name.replace(/[^a-zA-Z0-9]/g, ''),
       product.genericName,
-      `${product.name} composition`,
+      `${product.name} uses`,
       `${product.name} dosage`,
-      `${product.name} indications`,
-      `${product.name} side effects and uses`,
+      `${product.name} composition`,
+      `${product.name} price`,
+      `${product.name} MRP`,
+      `${product.name} side effects`,
+      `${product.name} packaging`,
+      `${product.name} ${product.form}`,
+      `buy ${product.name}`,
+      `order ${product.name}`,
+      `${product.name} tablet`,
+      `${product.name} syrup`,
+      `${product.name} manufacturer India`,
+      `${product.name} PCD franchise`,
+      `${product.genericName} tablets IP`,
+      `${product.genericName} price in India`,
       product.category,
       product.therapeuticArea,
+      'RexCure Pharma Hyderabad',
       ...product.composition,
       ...product.indications,
     ],
@@ -73,24 +97,29 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `${company.siteUrl}/products/${product.slug}`,
       siteName: company.name,
       type: 'article',
-      images: [
-        {
-          url: product.primaryImage || product.images[0],
-          width: 800,
-          height: 800,
-          alt: `${product.name} - ${product.genericName} by ${company.name}`,
-        },
-      ],
+      images: allImageUrls.map((imgUrl, idx) => ({
+        url: imgUrl,
+        width: 1000,
+        height: 1000,
+        alt: `${product.name} (${product.genericName}) - Official pharmaceutical packaging view ${idx + 1} by ${company.name}`,
+      })),
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [product.primaryImage || product.images[0]],
+      images: [primaryImageUrl],
     },
     robots: {
       index: true,
       follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+        'max-video-preview': -1,
+      },
     },
   }
 }
@@ -107,32 +136,128 @@ export default async function ProductPage({ params }: PageProps) {
     .filter((p) => p.therapeuticSlug === product.therapeuticSlug && p.slug !== product.slug)
     .slice(0, 3)
 
-  // Schema.org Medical Drug Structure (SEO preservation)
+  const primaryImageUrl = (product.primaryImage || product.images[0]).startsWith('http')
+    ? (product.primaryImage || product.images[0])
+    : `${company.siteUrl}${product.primaryImage || product.images[0]}`
+
+  const allImageUrls = product.images.map((img) =>
+    img.startsWith('http') ? img : `${company.siteUrl}${img}`
+  )
+
+  const numericPrice = parseFloat(product.mrp.replace(/[^0-9.]/g, '')) || 100.0
+
+  // Google Product & Drug Unified Schema.org Rich Result Graph
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Drug',
-    name: product.name,
-    nonProprietaryName: product.genericName,
-    description: product.shortDescription,
-    dosageForm: product.form,
-    activeIngredient: product.composition.join(', '),
-    brand: {
-      '@type': 'Organization',
-      name: company.legalName,
-      url: company.siteUrl,
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: company.city,
-        addressRegion: company.state,
-        addressCountry: 'IN',
+    '@graph': [
+      // 1. Google Product Rich Result (enables product badge in Google Images & price/stock in Web search)
+      {
+        '@type': 'Product',
+        '@id': `${company.siteUrl}/products/${product.slug}#product`,
+        name: product.name,
+        alternateName: product.genericName,
+        description: product.overview || product.shortDescription,
+        image: allImageUrls,
+        sku: product.slug,
+        mpn: product.slug.toUpperCase(),
+        brand: {
+          '@type': 'Brand',
+          name: company.name,
+        },
+        manufacturer: {
+          '@type': 'Organization',
+          name: company.legalName,
+          url: company.siteUrl,
+        },
+        category: product.therapeuticArea,
+        offers: {
+          '@type': 'Offer',
+          url: `${company.siteUrl}/products/${product.slug}`,
+          priceCurrency: 'INR',
+          price: numericPrice,
+          priceValidUntil: '2027-12-31',
+          itemCondition: 'https://schema.org/NewCondition',
+          availability: 'https://schema.org/InStock',
+          seller: {
+            '@type': 'Organization',
+            name: company.name,
+          },
+        },
       },
-    },
-    url: `${company.siteUrl}/products/${product.slug}`,
-    image: (product.primaryImage || product.images[0]).startsWith('http')
-      ? product.primaryImage
-      : `${company.siteUrl}${product.primaryImage || product.images[0]}`,
-    prescribingInfo: `${company.siteUrl}/products/${product.slug}`,
-    administrationRoute: 'Oral',
+      // 2. Schema.org Medical Drug Structure (Clinical Authority & Medical Knowledge Graph)
+      {
+        '@type': 'Drug',
+        '@id': `${company.siteUrl}/products/${product.slug}#drug`,
+        name: product.name,
+        nonProprietaryName: product.genericName,
+        description: product.shortDescription,
+        dosageForm: product.form,
+        activeIngredient: product.composition.join(', '),
+        drugUnit: product.strength,
+        administrationRoute: 'Oral',
+        prescriptionStatus:
+          product.prescription === 'Physician guided'
+            ? 'https://schema.org/PrescriptionOnly'
+            : 'https://schema.org/OTC',
+        legalStatus:
+          product.prescription === 'Physician guided'
+            ? 'Schedule H Prescription Drug'
+            : 'Over-the-Counter Healthcare Formulation',
+        warning:
+          'To be sold by retail on the prescription of a Registered Medical Practitioner only where applicable.',
+        brand: {
+          '@type': 'Organization',
+          name: company.legalName,
+          url: company.siteUrl,
+        },
+        manufacturer: {
+          '@type': 'Organization',
+          name: company.legalName,
+        },
+        url: `${company.siteUrl}/products/${product.slug}`,
+        image: primaryImageUrl,
+      },
+      // 3. Google Search Breadcrumb Navigation
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: company.siteUrl,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Products',
+            item: `${company.siteUrl}/products`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: product.therapeuticArea,
+            item: `${company.siteUrl}/therapeutic-areas/${product.therapeuticSlug}`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 4,
+            name: product.name,
+            item: `${company.siteUrl}/products/${product.slug}`,
+          },
+        ],
+      },
+      // 4. Google Image Search ImageObject
+      {
+        '@type': 'ImageObject',
+        '@id': `${primaryImageUrl}#image`,
+        url: primaryImageUrl,
+        contentUrl: primaryImageUrl,
+        caption: `${product.name} (${product.genericName}) official pharmaceutical packaging box`,
+        name: `${product.name} Packaging Display`,
+        representativeOfPage: true,
+      },
+    ],
   }
 
   return (
@@ -188,6 +313,7 @@ export default async function ProductPage({ params }: PageProps) {
           <div className="lg:col-span-5">
             <ProductGallery
               name={product.name}
+              genericName={product.genericName}
               images={product.images}
               category={product.category}
               prescription={product.prescription}
@@ -221,51 +347,23 @@ export default async function ProductPage({ params }: PageProps) {
               {product.genericName}
             </p>
 
-            {/* Strength */}
-            <p className="mt-1 text-sm font-normal text-[#555B66]">
-              Strength / Profile: <span className="font-semibold text-[#080878]">{product.strength}</span>
+            {/* Short Commercial Overview */}
+            <p className="mt-4 text-[15px] sm:text-[16px] text-[#475569] leading-relaxed font-normal">
+              {product.shortDescription}
             </p>
 
-            {/* Clinical Overview */}
-            <div className="mt-5 rounded-xl border border-[#D9DDE7] bg-[#F5F6FA] p-4 text-xs sm:text-sm leading-relaxed text-[#475569]">
-              <p>{product.overview}</p>
-            </div>
-
-            {/* Statutory Schedule H Warning for Prescription Formulations */}
-            {product.prescription === 'Physician guided' ? (
-              <div className="mt-4 rounded-xl border-l-4 border-[#DC2626] bg-[#FEF2F2] p-3.5 text-xs text-[#991B1B]">
-                <div className="flex items-center gap-1.5 font-bold uppercase tracking-wider text-[11px] text-[#DC2626]">
-                  <AlertCircle className="size-3.5" />
-                  <span>Schedule H Prescription Drug — Statutory Notice</span>
-                </div>
-                <p className="mt-0.5 text-[11px] leading-relaxed text-[#7F1D1D]">
-                  To be sold by retail on the prescription of a Registered Medical Practitioner only. Dispensed through licensed pharmacies.
-                </p>
+            {/* Quick Formulation Attributes Grid */}
+            <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className="rounded-xl border border-[#D9DDE7] bg-[#F5F6FA] p-3">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#555B66]">Strength</span>
+                <p className="mt-1 text-xs font-bold text-[#202124]">{product.strength}</p>
               </div>
-            ) : (
-              <div className="mt-4 rounded-xl border-l-4 border-[#080878] bg-[#DDE2FF] p-3.5 text-xs text-[#080878]">
-                <div className="flex items-center gap-1.5 font-bold uppercase tracking-wider text-[11px] text-[#080878]">
-                  <CheckCircle2 className="size-3.5" />
-                  <span>Supportive Care &amp; Nutraceutical Formulation</span>
-                </div>
-                <p className="mt-0.5 text-[11px] leading-relaxed text-[#202124]">
-                  Dietary / supportive formulation. Formulated in conformance with standard pharmacopoeial &amp; food safety guidelines.
-                </p>
+              <div className="rounded-xl border border-[#D9DDE7] bg-[#F5F6FA] p-3">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#555B66]">Commercial Pack</span>
+                <p className="mt-1 text-xs font-bold text-[#202124]">{product.pack}</p>
               </div>
-            )}
-
-            {/* Key Quick Specifications Grid */}
-            <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              <div className="rounded-xl border border-[#D9DDE7] bg-white p-3">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#555B66]">Dosage Form</span>
-                <p className="mt-1 text-xs font-bold text-[#080878]">{product.form}</p>
-              </div>
-              <div className="rounded-xl border border-[#D9DDE7] bg-white p-3">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#555B66]">Packaging Pack</span>
-                <p className="mt-1 text-xs font-bold text-[#080878]">{product.pack}</p>
-              </div>
-              <div className="rounded-xl border border-[#D9DDE7] bg-white p-3">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#555B66]">M.R.P. (Incl. Taxes)</span>
+              <div className="rounded-xl border border-[#D9DDE7] bg-[#F5F6FA] p-3">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#555B66]">Indicative MRP</span>
                 <p className="mt-1 text-xs font-bold text-[#080878]">{product.mrp}</p>
               </div>
               <div className="rounded-xl border border-[#D9DDE7] bg-white p-3">
@@ -303,140 +401,118 @@ export default async function ProductPage({ params }: PageProps) {
             <div className="lg:col-span-8 space-y-10">
               {/* Section 1: Exact Active Composition */}
               <div>
-                <div className="flex items-center gap-2.5 mb-4 border-b border-[#D9DDE7] pb-3">
-                  <div className="flex size-8 items-center justify-center rounded-lg bg-[#DDE2FF] text-[#080878]">
-                    <Pill className="size-4" />
-                  </div>
-                  <div>
-                    <h2 className="text-lg font-bold text-[#080878]">Composition &amp; Active Ingredients</h2>
-                    <p className="text-xs text-[#555B66]">Exact formulation and quantitative profile</p>
-                  </div>
+                <div className="flex items-center gap-2 mb-4 pb-2 border-b border-[#D9DDE7]">
+                  <Pill className="size-5 text-[#080878]" />
+                  <h2 className="text-xl font-bold text-[#080878]">Active Chemical Composition</h2>
                 </div>
-
-                <div className="overflow-hidden rounded-xl border border-[#D9DDE7] bg-white shadow-2xs">
-                  <table className="w-full text-left text-xs sm:text-sm">
-                    <thead className="bg-[#DDE2FF] border-b border-[#CCD5FF] text-[#080878] uppercase text-[10px] font-bold tracking-wider">
-                      <tr>
-                        <th className="px-4 py-3">Active Ingredient / Excipient</th>
-                        <th className="px-4 py-3">Specification / Potency</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-[#D9DDE7] text-[#202124]">
-                      {product.composition.map((item, idx) => (
-                        <tr key={idx} className="hover:bg-[#F5F6FA]">
-                          <td className="px-4 py-3 font-semibold text-[#080878]">{item}</td>
-                          <td className="px-4 py-3 text-[#555B66]">
-                            Pharmacopoeial Standard Formulation
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                <div className="rounded-xl border border-[#D9DDE7] bg-[#F5F6FA] p-5">
+                  <p className="text-xs font-semibold text-[#555B66] mb-3 uppercase tracking-wider">
+                    Each {product.form.toLowerCase().includes('tablet') ? 'film-coated tablet' : product.form.toLowerCase().includes('capsule') || product.form.toLowerCase().includes('softgel') ? 'capsule / softgel' : '5 ml suspension'} contains:
+                  </p>
+                  <ul className="space-y-2">
+                    {product.composition.map((comp, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 text-sm text-[#202124] font-medium">
+                        <CheckCircle2 className="size-4 text-[#080878] shrink-0 mt-0.5" />
+                        <span>{comp}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
 
               {/* Section 2: Clinical Indications */}
               <div>
-                <div className="flex items-center gap-2.5 mb-4 border-b border-[#D9DDE7] pb-3">
-                  <div className="flex size-8 items-center justify-center rounded-lg bg-[#DDE2FF] text-[#080878]">
-                    <ClipboardList className="size-4" />
-                  </div>
-                  <div>
-                    <h2 className="text-lg font-bold text-[#080878]">Therapeutic Indications &amp; Clinical Use</h2>
-                    <p className="text-xs text-[#555B66]">Conditions managed under physician guidance</p>
-                  </div>
+                <div className="flex items-center gap-2 mb-4 pb-2 border-b border-[#D9DDE7]">
+                  <ClipboardList className="size-5 text-[#080878]" />
+                  <h2 className="text-xl font-bold text-[#080878]">Primary Clinical Indications</h2>
                 </div>
-
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  {product.indications.map((indication, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-start gap-2.5 rounded-lg border border-[#D9DDE7] bg-[#F5F6FA] p-3 text-xs sm:text-sm text-[#202124]"
-                    >
-                      <CheckCircle2 className="size-4 text-[#080878] shrink-0 mt-0.5" />
-                      <span>{indication}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Section 3: Clinical Benefits */}
-              <div>
-                <div className="flex items-center gap-2.5 mb-4 border-b border-[#D9DDE7] pb-3">
-                  <div className="flex size-8 items-center justify-center rounded-lg bg-[#DDE2FF] text-[#080878]">
-                    <Sparkles className="size-4" />
-                  </div>
-                  <div>
-                    <h2 className="text-lg font-bold text-[#080878]">Key Clinical Benefits &amp; Pharmacological Rationale</h2>
-                    <p className="text-xs text-[#555B66]">Advantages for healthcare practitioners and patient compliance</p>
-                  </div>
-                </div>
-
-                <div className="space-y-3">
-                  {product.benefits.map((benefit, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-start gap-3 rounded-lg border border-[#D9DDE7] bg-white p-3.5 text-xs sm:text-sm leading-relaxed text-[#202124] shadow-2xs"
-                    >
-                      <span className="flex size-5 shrink-0 items-center justify-center rounded bg-[#DDE2FF] text-[11px] font-bold text-[#080878] mt-0.5">
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {product.indications.map((ind, idx) => (
+                    <div key={idx} className="flex items-start gap-3 rounded-xl border border-[#D9DDE7] bg-white p-4">
+                      <div className="size-6 rounded-md bg-[#DDE2FF] flex items-center justify-center shrink-0 mt-0.5 text-[#080878] text-xs font-bold">
                         {idx + 1}
-                      </span>
-                      <span>{benefit}</span>
+                      </div>
+                      <p className="text-xs sm:text-sm font-medium text-[#202124] leading-relaxed">
+                        {ind}
+                      </p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              {/* Section 4: Recommended Dosage */}
+              {/* Section 3: Therapeutic Mechanism & Overview */}
               <div>
-                <div className="flex items-center gap-2.5 mb-4 border-b border-[#D9DDE7] pb-3">
-                  <div className="flex size-8 items-center justify-center rounded-lg bg-[#DDE2FF] text-[#080878]">
-                    <ShieldCheck className="size-4" />
-                  </div>
-                  <div>
-                    <h2 className="text-lg font-bold text-[#080878]">Recommended Dosage &amp; Administration</h2>
-                    <p className="text-xs text-[#555B66]">Clinical administration protocol</p>
-                  </div>
+                <div className="flex items-center gap-2 mb-4 pb-2 border-b border-[#D9DDE7]">
+                  <Sparkles className="size-5 text-[#080878]" />
+                  <h2 className="text-xl font-bold text-[#080878]">Therapeutic Pharmacology &amp; Overview</h2>
                 </div>
+                <div className="rounded-xl border border-[#D9DDE7] bg-white p-6 leading-relaxed text-[#475569] text-[15px]">
+                  <p>{product.overview}</p>
+                </div>
+              </div>
 
-                <div className="rounded-xl border border-[#D9DDE7] bg-[#F5F6FA] p-4 text-xs sm:text-sm leading-relaxed text-[#202124]">
-                  <p className="font-bold text-[#080878]">Prescribing Guidance:</p>
-                  <p className="mt-1 text-[#555B66]">{product.dosage}</p>
-                  <div className="mt-3 flex items-center gap-2 text-xs text-[#B91C1C] bg-[#FEF2F2] p-2.5 rounded border border-[#FEE2E2]">
-                    <AlertCircle className="size-4 shrink-0" />
-                    <span>Always titrate and administer under registered medical advice. Do not exceed prescribed daily dose.</span>
-                  </div>
+              {/* Section 4: Therapeutic Formulation Benefits */}
+              <div>
+                <div className="flex items-center gap-2 mb-4 pb-2 border-b border-[#D9DDE7]">
+                  <ShieldCheck className="size-5 text-[#080878]" />
+                  <h2 className="text-xl font-bold text-[#080878]">Key Formulation Advantages</h2>
+                </div>
+                <div className="rounded-xl border border-[#CCD5FF] bg-[#DDE2FF]/40 p-5 space-y-3">
+                  {product.benefits.map((benefit, idx) => (
+                    <div key={idx} className="flex items-start gap-2.5 text-sm text-[#202124]">
+                      <span className="size-1.5 rounded-full bg-[#080878] mt-2 shrink-0" />
+                      <span className="font-medium">{benefit}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Section 5: Recommended Posology */}
+              <div>
+                <div className="flex items-center gap-2 mb-4 pb-2 border-b border-[#D9DDE7]">
+                  <AlertCircle className="size-5 text-[#080878]" />
+                  <h2 className="text-xl font-bold text-[#080878]">Dosage &amp; Administration</h2>
+                </div>
+                <div className="rounded-xl border border-[#D9DDE7] bg-[#F5F6FA] p-5 text-sm text-[#202124]">
+                  <p className="font-semibold text-[#080878] mb-1">Standard Adult / Pediatric Regimen:</p>
+                  <p className="leading-relaxed">{product.dosage}</p>
+                  <p className="mt-3 text-xs text-[#555B66] italic">
+                    Disclaimer: Dosage must be strictly adjusted by treating physicians based on clinical severity, renal clearance, and body weight.
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* Sidebar Specifications & Packaging Info (4 cols) */}
+            {/* Sidebar Specifications & Regulatory Info (4 cols) */}
             <div className="lg:col-span-4 space-y-6">
-              {/* Packaging & Storage Box */}
-              <div className="rounded-xl border border-[#D9DDE7] bg-white p-5 shadow-2xs">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-[#080878] mb-4 border-b border-[#D9DDE7] pb-2">
-                  Packaging &amp; Stability
+              {/* Packaging Specification Card */}
+              <div className="rounded-xl border border-[#D9DDE7] bg-[#F5F6FA] p-6 space-y-4">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-[#080878] pb-2 border-b border-[#D9DDE7]">
+                  Packaging &amp; Storage Details
                 </h3>
 
-                <div className="space-y-4 text-xs">
+                <div className="space-y-3.5 text-xs">
                   <div>
-                    <span className="font-bold text-[#555B66] flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 text-[#555B66] font-medium">
                       <Boxes className="size-3.5 text-[#080878]" />
-                      Packaging Format
-                    </span>
+                      <span>Commercial Presentation:</span>
+                    </div>
                     <p className="mt-1 font-semibold text-[#202124]">{product.packaging}</p>
                   </div>
 
                   <div>
-                    <span className="font-bold text-[#555B66] flex items-center gap-1.5">
+                    <div className="flex items-center gap-1.5 text-[#555B66] font-medium">
                       <Thermometer className="size-3.5 text-[#080878]" />
-                      Storage Conditions
-                    </span>
-                    <p className="mt-1 text-[#202124]">{product.storage}</p>
+                      <span>Storage Monograph:</span>
+                    </div>
+                    <p className="mt-1 font-semibold text-[#202124]">{product.storage}</p>
                   </div>
 
-                  <div className="pt-2 border-t border-[#F5F6FA]">
-                    <span className="font-bold text-[#555B66]">Marketing &amp; Distribution</span>
+                  <div>
+                    <div className="flex items-center gap-1.5 text-[#555B66] font-medium">
+                      <ShieldCheck className="size-3.5 text-[#080878]" />
+                      <span>Market Authorization Holder:</span>
+                    </div>
                     <p className="mt-1 font-semibold text-[#202124]">{company.legalName}</p>
                     <p className="text-[#555B66] mt-0.5">{company.city}, {company.state}</p>
                   </div>
@@ -481,24 +557,24 @@ export default async function ProductPage({ params }: PageProps) {
               </div>
               <Link
                 href={`/therapeutic-areas/${product.therapeuticSlug}`}
-                className="text-xs font-bold text-[#080878] hover:text-[#304BEA] flex items-center gap-1 uppercase tracking-wider"
+                className="text-xs font-bold text-[#080878] hover:underline uppercase tracking-wider"
               >
-                <span>View All In This Segment</span>
-                <ArrowRight className="size-3.5" />
+                View Area (All) &rarr;
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {relatedProducts.map((rel) => (
                 <article
                   key={rel.slug}
-                  className="group flex flex-col justify-between rounded-xl border border-[#D9DDE7] bg-white p-4 shadow-2xs hover:border-[#080878] hover:shadow-md transition-all"
+                  className="group flex flex-col justify-between rounded-xl border border-[#D9DDE7] bg-white p-5 hover:border-[#CCD5FF] hover:shadow-md transition-all"
                 >
                   <div>
-                    <div className="relative aspect-square w-full overflow-hidden bg-white mb-3 p-3 flex items-center justify-center border-b border-[#F5F6FA]">
+                    <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-[#F5F6FA] mb-4 p-3 flex items-center justify-center">
                       <Image
                         src={rel.primaryImage || rel.images[0]}
-                        alt={rel.name}
+                        alt={`${rel.name} (${rel.genericName}) - ${rel.category} formulation packaging by RexCure Pharma`}
+                        title={`${rel.name} - ${rel.genericName}`}
                         width={300}
                         height={300}
                         className="h-full w-full object-contain group-hover:scale-105 transition-transform"

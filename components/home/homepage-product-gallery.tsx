@@ -154,7 +154,8 @@ export function HomepageProductGallery() {
                   <div className="relative w-full h-full flex items-center justify-center">
                     <Image
                       src={displayImage}
-                      alt={`${product.name} packaging`}
+                      alt={`${product.name} (${product.genericName}) - ${product.category} pharmaceutical packaging by RexCure Pharma`}
+                      title={`${product.name} - ${product.genericName}`}
                       width={640}
                       height={480}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

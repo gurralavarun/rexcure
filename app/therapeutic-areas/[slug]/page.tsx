@@ -131,7 +131,8 @@ export default async function TherapeuticDetailPage({ params }: PageProps) {
                     <div className="relative aspect-square w-full overflow-hidden bg-white p-5 border-b border-[#F5F6FA] flex items-center justify-center">
                       <Image
                         src={product.primaryImage || product.images[0]}
-                        alt={`${product.name} packaging`}
+                        alt={`${product.name} (${product.genericName}) - ${product.category} packaging by RexCure Pharma`}
+                        title={`${product.name} - ${product.genericName}`}
                         width={400}
                         height={400}
                         className="h-full w-full object-contain group-hover:scale-105 transition-transform"
