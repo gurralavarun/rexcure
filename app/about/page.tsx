@@ -59,7 +59,7 @@ export default function AboutPage() {
             { label: 'About Us' },
           ]}
           eyebrow="Corporate Profile & Governance"
-          title="ABOUT REXCURE PHARMA"
+          title="About REXCURE PHARMA"
           description="Headquartered in Hyderabad, Telangana, RexCure Pharmaceuticals is an established Indian healthcare enterprise dedicated to formulating and marketing high-integrity prescription medicines."
           variant="light-blue"
         />
@@ -117,7 +117,7 @@ export default function AboutPage() {
                 <div className="flex size-12 items-center justify-center rounded-lg bg-[#DDE2FF] text-[#080878] mb-5">
                   <Target className="size-6" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#080878]">Our Corporate Mission</h3>
+                <h3 className="text-2xl font-bold text-[#080878]">Our Mission</h3>
                 <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#475569]">
                   To formulate and distribute therapeutics of the highest pharmaceutical standards, providing healthcare practitioners with dependable clinical tools and patients with accessible, high-efficacy medications across chronic and acute therapy areas.
                 </p>
@@ -141,7 +141,7 @@ export default function AboutPage() {
                 <div className="flex size-12 items-center justify-center rounded-lg bg-[#DDE2FF] text-[#080878] mb-5">
                   <Eye className="size-6" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#080878]">Our Corporate Vision</h3>
+                <h3 className="text-2xl font-bold text-[#080878]">Our Vision</h3>
                 <p className="mt-4 text-sm sm:text-base leading-relaxed text-[#475569]">
                   To be acknowledged as one of India's most dependable and ethically grounded pharmaceutical enterprises, recognized for our rigorous quality governance, formulation stability, and long-standing clinician trust.
                 </p>

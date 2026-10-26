@@ -19,10 +19,9 @@ export default function HomePage() {
     telephone: `+91-${company.phone}`,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Plot No. 44, Industrial Development Area',
+      streetAddress: 'DNO 18-500/2, Malkangiri, Secunderabad',
       addressLocality: company.city,
       addressRegion: company.state,
-      postalCode: '500037',
       addressCountry: 'IN',
     },
     logo: `${company.siteUrl}/logo.svg`,

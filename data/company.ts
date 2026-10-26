@@ -16,13 +16,13 @@ export interface CompanyInfo {
 
 export const company: CompanyInfo = {
   name: 'RexCure Pharma',
-  legalName: 'RexCure Pharma Pvt. Ltd.',
+  legalName: 'RexCure Pharmaceuticals Pvt. Ltd.',
   shortName: 'RexCure Pharma',
   siteUrl: 'https://www.rexcurepharma.com',
   email: 'info@rexcurepharma.com',
   phone: '9885152643',
   phoneDisplay: '+91 98851 52643',
-  address: 'Plot No. 44, Industrial Development Area, Hyderabad, Telangana 500037, India',
+  address: 'DNO 18-500/2, Malkangiri, Secunderabad, Hyderabad, Telangana',
   city: 'Hyderabad',
   state: 'Telangana',
   country: 'India',
