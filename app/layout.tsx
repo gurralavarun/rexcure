@@ -146,7 +146,7 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': ['Organization', 'MedicalBusiness'],
+        '@type': ['Organization', 'LocalBusiness', 'MedicalBusiness'],
         '@id': `${company.siteUrl}/#organization`,
         name: company.name,
         legalName: company.legalName,
