@@ -129,8 +129,8 @@ export default async function ProductPage({ params }: PageProps) {
     img.startsWith('http') ? img : `${company.siteUrl}${img}`
   )
 
-  // Authoritative pharmaceutical formulation schema (MedicalWebPage + Drug + Breadcrumbs + ImageObject)
-  // Replaces conflicting consumer Product rich snippet with verified clinical & pharmaceutical structured data
+  // Authoritative medical monograph schema (MedicalWebPage + BreadcrumbList + ImageObject)
+  // Strictly tailored for informational pharmaceutical catalogue without e-commerce Product/Drug snippets
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -140,54 +140,26 @@ export default async function ProductPage({ params }: PageProps) {
         '@id': `https://www.rexcurepharma.com/products/${product.slug}#webpage`,
         url: `https://www.rexcurepharma.com/products/${product.slug}`,
         name: `${product.name} (${product.genericName}) | RexCure Pharma`,
+        headline: `${product.name} (${product.genericName}) - ${product.strength}`,
         description: product.overview || product.shortDescription,
         breadcrumb: {
           '@id': `https://www.rexcurepharma.com/products/${product.slug}#breadcrumb`,
         },
-        mainEntity: {
-          '@id': `https://www.rexcurepharma.com/products/${product.slug}#drug`,
-        },
         primaryImageOfPage: {
           '@id': `${primaryImageUrl}#image`,
         },
-      },
-      // 2. Schema.org Drug Formulation (verified composition, dosage form, active ingredients)
-      {
-        '@type': 'Drug',
-        '@id': `https://www.rexcurepharma.com/products/${product.slug}#drug`,
-        name: product.name,
-        nonProprietaryName: product.genericName,
-        description: product.overview || product.shortDescription,
-        image: allImageUrls,
-        dosageForm: product.form,
-        activeIngredient: product.composition.join(', '),
-        drugUnit: product.strength,
-        administrationRoute:
-          product.form.toLowerCase().includes('injection') || product.form.toLowerCase().includes('iv')
-            ? 'Intravenous'
-            : 'Oral',
-        prescriptionStatus:
-          product.prescription === 'Physician guided'
-            ? 'https://schema.org/PrescriptionOnly'
-            : 'https://schema.org/OTC',
-        legalStatus:
-          product.prescription === 'Physician guided'
-            ? 'Schedule H Prescription Drug'
-            : 'Over-the-Counter Healthcare Formulation',
-        warning:
-          'To be sold by retail on the prescription of a Registered Medical Practitioner only where applicable.',
-        brand: {
-          '@type': 'Brand',
-          name: 'RexCure Pharma',
-        },
-        manufacturer: {
+        author: {
           '@type': 'Organization',
           name: company.legalName,
           url: 'https://www.rexcurepharma.com',
         },
-        url: `https://www.rexcurepharma.com/products/${product.slug}`,
+        publisher: {
+          '@type': 'Organization',
+          name: company.legalName,
+          url: 'https://www.rexcurepharma.com',
+        },
       },
-      // 3. Search Breadcrumb Navigation
+      // 2. Search Breadcrumb Navigation
       {
         '@type': 'BreadcrumbList',
         '@id': `https://www.rexcurepharma.com/products/${product.slug}#breadcrumb`,
@@ -218,7 +190,7 @@ export default async function ProductPage({ params }: PageProps) {
           },
         ],
       },
-      // 4. ImageObject metadata
+      // 3. ImageObject metadata
       {
         '@type': 'ImageObject',
         '@id': `${primaryImageUrl}#image`,
